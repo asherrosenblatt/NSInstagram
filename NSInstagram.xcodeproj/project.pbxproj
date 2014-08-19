@@ -36,8 +36,6 @@
 		BACE2C0419A2BD2E001B8858 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0319A2BD2E001B8858 /* StoreKit.framework */; };
 		BACE2C0619A2BD90001B8858 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0519A2BD90001B8858 /* QuartzCore.framework */; };
 		BACE2C0819A2BDA4001B8858 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */; };
-		BACE2C0B19A2C1E8001B8858 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2C0A19A2C1E8001B8858 /* LoginViewController.m */; };
-		BACE2C0E19A2C1F5001B8858 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2C0D19A2C1F5001B8858 /* SignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,10 +85,6 @@
 		BACE2C0319A2BD2E001B8858 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BACE2C0519A2BD90001B8858 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		BACE2C0919A2C1E8001B8858 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		BACE2C0A19A2C1E8001B8858 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		BACE2C0C19A2C1F5001B8858 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
-		BACE2C0D19A2C1F5001B8858 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +179,6 @@
 				BACE2BCD19A2B71C001B8858 /* SecondViewController.m */,
 				BACE2BC919A2B71C001B8858 /* FirstViewController.h */,
 				BACE2BCA19A2B71C001B8858 /* FirstViewController.m */,
-				BAD7773B19A3ACD10091D0D2 /* Login/SignUp */,
 				BACE2BCF19A2B71C001B8858 /* Images.xcassets */,
 				BACE2BBB19A2B71C001B8858 /* Supporting Files */,
 			);
@@ -219,17 +212,6 @@
 				BACE2BDF19A2B71C001B8858 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		BAD7773B19A3ACD10091D0D2 /* Login/SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				BACE2C0919A2C1E8001B8858 /* LoginViewController.h */,
-				BACE2C0A19A2C1E8001B8858 /* LoginViewController.m */,
-				BACE2C0C19A2C1F5001B8858 /* SignUpViewController.h */,
-				BACE2C0D19A2C1F5001B8858 /* SignUpViewController.m */,
-			);
-			name = Login/SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,10 +313,8 @@
 			files = (
 				BACE2BCE19A2B71C001B8858 /* SecondViewController.m in Sources */,
 				BACE2BEE19A2BB3F001B8858 /* AddPhotoViewController.m in Sources */,
-				BACE2C0B19A2C1E8001B8858 /* LoginViewController.m in Sources */,
 				BACE2BC519A2B71C001B8858 /* AppDelegate.m in Sources */,
 				BACE2BCB19A2B71C001B8858 /* FirstViewController.m in Sources */,
-				BACE2C0E19A2C1F5001B8858 /* SignUpViewController.m in Sources */,
 				BACE2BC119A2B71C001B8858 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
