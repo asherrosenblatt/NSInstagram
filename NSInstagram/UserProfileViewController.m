@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 MM. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "UserProfileViewController.h"
 
-@interface FirstViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface UserProfileViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 @end
 
-@implementation FirstViewController
+@implementation UserProfileViewController
 
 - (void)viewDidLoad
 {

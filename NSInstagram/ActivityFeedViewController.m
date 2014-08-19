@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 MM. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "ActivityFeedViewController.h"
 
-@interface SecondViewController ()
+@interface ActivityFeedViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation ActivityFeedViewController
 
 - (void)viewDidLoad
 {

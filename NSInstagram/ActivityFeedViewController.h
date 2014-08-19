@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface ActivityFeedViewController : UIViewController
 @end

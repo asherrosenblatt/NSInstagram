@@ -14,8 +14,8 @@
 		BACE2BC119A2B71C001B8858 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2BC019A2B71C001B8858 /* main.m */; };
 		BACE2BC519A2B71C001B8858 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2BC419A2B71C001B8858 /* AppDelegate.m */; };
 		BACE2BC819A2B71C001B8858 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BACE2BC619A2B71C001B8858 /* Main.storyboard */; };
-		BACE2BCB19A2B71C001B8858 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2BCA19A2B71C001B8858 /* FirstViewController.m */; };
-		BACE2BCE19A2B71C001B8858 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2BCD19A2B71C001B8858 /* SecondViewController.m */; };
+		BACE2BCB19A2B71C001B8858 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2BCA19A2B71C001B8858 /* UserProfileViewController.m */; };
+		BACE2BCE19A2B71C001B8858 /* ActivityFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2BCD19A2B71C001B8858 /* ActivityFeedViewController.m */; };
 		BACE2BD019A2B71C001B8858 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BACE2BCF19A2B71C001B8858 /* Images.xcassets */; };
 		BACE2BD719A2B71C001B8858 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BD619A2B71C001B8858 /* XCTest.framework */; };
 		BACE2BD819A2B71C001B8858 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB419A2B71C001B8858 /* Foundation.framework */; };
@@ -60,10 +60,10 @@
 		BACE2BC319A2B71C001B8858 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BACE2BC419A2B71C001B8858 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BACE2BC719A2B71C001B8858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BACE2BC919A2B71C001B8858 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		BACE2BCA19A2B71C001B8858 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		BACE2BCC19A2B71C001B8858 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		BACE2BCD19A2B71C001B8858 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		BACE2BC919A2B71C001B8858 /* UserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		BACE2BCA19A2B71C001B8858 /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		BACE2BCC19A2B71C001B8858 /* ActivityFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityFeedViewController.h; sourceTree = "<group>"; };
+		BACE2BCD19A2B71C001B8858 /* ActivityFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityFeedViewController.m; sourceTree = "<group>"; };
 		BACE2BCF19A2B71C001B8858 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BACE2BD519A2B71C001B8858 /* NSInstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSInstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BACE2BD619A2B71C001B8858 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -175,10 +175,10 @@
 				BACE2BC619A2B71C001B8858 /* Main.storyboard */,
 				BACE2BEC19A2BB3F001B8858 /* AddPhotoViewController.h */,
 				BACE2BED19A2BB3F001B8858 /* AddPhotoViewController.m */,
-				BACE2BCC19A2B71C001B8858 /* SecondViewController.h */,
-				BACE2BCD19A2B71C001B8858 /* SecondViewController.m */,
-				BACE2BC919A2B71C001B8858 /* FirstViewController.h */,
-				BACE2BCA19A2B71C001B8858 /* FirstViewController.m */,
+				BACE2BCC19A2B71C001B8858 /* ActivityFeedViewController.h */,
+				BACE2BCD19A2B71C001B8858 /* ActivityFeedViewController.m */,
+				BACE2BC919A2B71C001B8858 /* UserProfileViewController.h */,
+				BACE2BCA19A2B71C001B8858 /* UserProfileViewController.m */,
 				BACE2BCF19A2B71C001B8858 /* Images.xcassets */,
 				BACE2BBB19A2B71C001B8858 /* Supporting Files */,
 			);
@@ -311,10 +311,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BACE2BCE19A2B71C001B8858 /* SecondViewController.m in Sources */,
+				BACE2BCE19A2B71C001B8858 /* ActivityFeedViewController.m in Sources */,
 				BACE2BEE19A2BB3F001B8858 /* AddPhotoViewController.m in Sources */,
 				BACE2BC519A2B71C001B8858 /* AppDelegate.m in Sources */,
-				BACE2BCB19A2B71C001B8858 /* FirstViewController.m in Sources */,
+				BACE2BCB19A2B71C001B8858 /* UserProfileViewController.m in Sources */,
 				BACE2BC119A2B71C001B8858 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
