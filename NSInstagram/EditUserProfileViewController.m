@@ -8,42 +8,43 @@
 
 #import "EditUserProfileViewController.h"
 
-@interface EditUserProfileViewController ()
+@interface EditUserProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (strong, nonatomic) IBOutlet UIImageView *editProfileImageView;
 
 @end
 
 @implementation EditUserProfileViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSData *imageData = [PFUser currentUser][@"profilePicture"];
+    self.editProfileImageView.image = [UIImage imageWithData:imageData];
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)onChooseImageButtonPressed:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:imagePickerController animated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)imagePickerController:(UIImagePickerController *)picker
+        didFinishPickingImage:(UIImage *)image
+                  editingInfo:(NSDictionary *)editingInfo
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    // Dismiss the image selection, hide the picker and
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    self.editProfileImageView.image = [UIImage imageWithData:imageData];
+    [PFUser currentUser][@"profilePicture"] = imageData;
+    [picker dismissModalViewControllerAnimated:YES];
+    //UIImage *newImage = image;
+
+
 }
-*/
 
 @end
