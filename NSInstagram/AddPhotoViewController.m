@@ -9,6 +9,8 @@
 #import "AddPhotoViewController.h"
 
 @interface AddPhotoViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *libraryButton;
 
 @end
 
@@ -21,5 +23,9 @@
     // Do any additional setup after loading the view.
 }
 
+- (IBAction)onCameraButtonPressed:(UIButton *)sender {
+}
+- (IBAction)onLibraryButtonPressed:(UIButton *)sender {
+}
 
 @end
