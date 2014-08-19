@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FirstViewController : UIViewController
-
+@property PFUser *currentUser;
 @end

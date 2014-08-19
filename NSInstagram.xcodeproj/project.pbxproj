@@ -22,6 +22,22 @@
 		BACE2BD919A2B71C001B8858 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB819A2B71C001B8858 /* UIKit.framework */; };
 		BACE2BE119A2B71C001B8858 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BACE2BDF19A2B71C001B8858 /* InfoPlist.strings */; };
 		BACE2BE319A2B71C001B8858 /* NSInstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2BE219A2B71C001B8858 /* NSInstagramTests.m */; };
+		BACE2BEE19A2BB3F001B8858 /* AddPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2BED19A2BB3F001B8858 /* AddPhotoViewController.m */; };
+		BACE2BF019A2BB9F001B8858 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BEF19A2BB9F001B8858 /* Parse.framework */; };
+		BACE2BFA19A2BC84001B8858 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF119A2BC84001B8858 /* Accounts.framework */; };
+		BACE2BFB19A2BC84001B8858 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF219A2BC84001B8858 /* AdSupport.framework */; };
+		BACE2BFC19A2BC84001B8858 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF319A2BC84001B8858 /* AudioToolbox.framework */; };
+		BACE2BFD19A2BC84001B8858 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF419A2BC84001B8858 /* CFNetwork.framework */; };
+		BACE2BFE19A2BC84001B8858 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF519A2BC84001B8858 /* CoreLocation.framework */; };
+		BACE2BFF19A2BC84001B8858 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF619A2BC84001B8858 /* libz.dylib */; };
+		BACE2C0019A2BC84001B8858 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF719A2BC84001B8858 /* MobileCoreServices.framework */; };
+		BACE2C0119A2BC84001B8858 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF819A2BC84001B8858 /* Security.framework */; };
+		BACE2C0219A2BC84001B8858 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BF919A2BC84001B8858 /* Social.framework */; };
+		BACE2C0419A2BD2E001B8858 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0319A2BD2E001B8858 /* StoreKit.framework */; };
+		BACE2C0619A2BD90001B8858 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0519A2BD90001B8858 /* QuartzCore.framework */; };
+		BACE2C0819A2BDA4001B8858 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */; };
+		BACE2C0B19A2C1E8001B8858 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2C0A19A2C1E8001B8858 /* LoginViewController.m */; };
+		BACE2C0E19A2C1F5001B8858 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE2C0D19A2C1F5001B8858 /* SignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +72,25 @@
 		BACE2BDE19A2B71C001B8858 /* NSInstagramTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NSInstagramTests-Info.plist"; sourceTree = "<group>"; };
 		BACE2BE019A2B71C001B8858 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BACE2BE219A2B71C001B8858 /* NSInstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSInstagramTests.m; sourceTree = "<group>"; };
+		BACE2BEC19A2BB3F001B8858 /* AddPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhotoViewController.h; sourceTree = "<group>"; };
+		BACE2BED19A2BB3F001B8858 /* AddPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhotoViewController.m; sourceTree = "<group>"; };
+		BACE2BEF19A2BB9F001B8858 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		BACE2BF119A2BC84001B8858 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		BACE2BF219A2BC84001B8858 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		BACE2BF319A2BC84001B8858 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BACE2BF419A2BC84001B8858 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		BACE2BF519A2BC84001B8858 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BACE2BF619A2BC84001B8858 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BACE2BF719A2BC84001B8858 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BACE2BF819A2BC84001B8858 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BACE2BF919A2BC84001B8858 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		BACE2C0319A2BD2E001B8858 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		BACE2C0519A2BD90001B8858 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BACE2C0919A2C1E8001B8858 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		BACE2C0A19A2C1E8001B8858 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		BACE2C0C19A2C1F5001B8858 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		BACE2C0D19A2C1F5001B8858 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +98,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BACE2C0819A2BDA4001B8858 /* SystemConfiguration.framework in Frameworks */,
+				BACE2C0619A2BD90001B8858 /* QuartzCore.framework in Frameworks */,
+				BACE2C0019A2BC84001B8858 /* MobileCoreServices.framework in Frameworks */,
+				BACE2C0419A2BD2E001B8858 /* StoreKit.framework in Frameworks */,
+				BACE2BFA19A2BC84001B8858 /* Accounts.framework in Frameworks */,
+				BACE2BFB19A2BC84001B8858 /* AdSupport.framework in Frameworks */,
+				BACE2BFC19A2BC84001B8858 /* AudioToolbox.framework in Frameworks */,
+				BACE2BFD19A2BC84001B8858 /* CFNetwork.framework in Frameworks */,
+				BACE2BFE19A2BC84001B8858 /* CoreLocation.framework in Frameworks */,
+				BACE2BFF19A2BC84001B8858 /* libz.dylib in Frameworks */,
+				BACE2C0119A2BC84001B8858 /* Security.framework in Frameworks */,
+				BACE2C0219A2BC84001B8858 /* Social.framework in Frameworks */,
 				BACE2BB719A2B71C001B8858 /* CoreGraphics.framework in Frameworks */,
 				BACE2BB919A2B71C001B8858 /* UIKit.framework in Frameworks */,
+				BACE2BF019A2BB9F001B8858 /* Parse.framework in Frameworks */,
 				BACE2BB519A2B71C001B8858 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +152,19 @@
 		BACE2BB319A2B71C001B8858 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BACE2BEF19A2BB9F001B8858 /* Parse.framework */,
+				BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */,
+				BACE2C0519A2BD90001B8858 /* QuartzCore.framework */,
+				BACE2C0319A2BD2E001B8858 /* StoreKit.framework */,
+				BACE2BF119A2BC84001B8858 /* Accounts.framework */,
+				BACE2BF219A2BC84001B8858 /* AdSupport.framework */,
+				BACE2BF319A2BC84001B8858 /* AudioToolbox.framework */,
+				BACE2BF419A2BC84001B8858 /* CFNetwork.framework */,
+				BACE2BF519A2BC84001B8858 /* CoreLocation.framework */,
+				BACE2BF619A2BC84001B8858 /* libz.dylib */,
+				BACE2BF719A2BC84001B8858 /* MobileCoreServices.framework */,
+				BACE2BF819A2BC84001B8858 /* Security.framework */,
+				BACE2BF919A2BC84001B8858 /* Social.framework */,
 				BACE2BB419A2B71C001B8858 /* Foundation.framework */,
 				BACE2BB619A2B71C001B8858 /* CoreGraphics.framework */,
 				BACE2BB819A2B71C001B8858 /* UIKit.framework */,
@@ -118,10 +179,13 @@
 				BACE2BC319A2B71C001B8858 /* AppDelegate.h */,
 				BACE2BC419A2B71C001B8858 /* AppDelegate.m */,
 				BACE2BC619A2B71C001B8858 /* Main.storyboard */,
-				BACE2BC919A2B71C001B8858 /* FirstViewController.h */,
-				BACE2BCA19A2B71C001B8858 /* FirstViewController.m */,
+				BACE2BEC19A2BB3F001B8858 /* AddPhotoViewController.h */,
+				BACE2BED19A2BB3F001B8858 /* AddPhotoViewController.m */,
 				BACE2BCC19A2B71C001B8858 /* SecondViewController.h */,
 				BACE2BCD19A2B71C001B8858 /* SecondViewController.m */,
+				BACE2BC919A2B71C001B8858 /* FirstViewController.h */,
+				BACE2BCA19A2B71C001B8858 /* FirstViewController.m */,
+				BAD7773B19A3ACD10091D0D2 /* Login/SignUp */,
 				BACE2BCF19A2B71C001B8858 /* Images.xcassets */,
 				BACE2BBB19A2B71C001B8858 /* Supporting Files */,
 			);
@@ -155,6 +219,17 @@
 				BACE2BDF19A2B71C001B8858 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BAD7773B19A3ACD10091D0D2 /* Login/SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				BACE2C0919A2C1E8001B8858 /* LoginViewController.h */,
+				BACE2C0A19A2C1E8001B8858 /* LoginViewController.m */,
+				BACE2C0C19A2C1F5001B8858 /* SignUpViewController.h */,
+				BACE2C0D19A2C1F5001B8858 /* SignUpViewController.m */,
+			);
+			name = Login/SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,8 +330,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BACE2BCE19A2B71C001B8858 /* SecondViewController.m in Sources */,
+				BACE2BEE19A2BB3F001B8858 /* AddPhotoViewController.m in Sources */,
+				BACE2C0B19A2C1E8001B8858 /* LoginViewController.m in Sources */,
 				BACE2BC519A2B71C001B8858 /* AppDelegate.m in Sources */,
 				BACE2BCB19A2B71C001B8858 /* FirstViewController.m in Sources */,
+				BACE2C0E19A2C1F5001B8858 /* SignUpViewController.m in Sources */,
 				BACE2BC119A2B71C001B8858 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +460,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSInstagram/NSInstagram-Prefix.pch";
 				INFOPLIST_FILE = "NSInstagram/NSInstagram-Info.plist";
@@ -395,6 +477,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSInstagram/NSInstagram-Prefix.pch";
 				INFOPLIST_FILE = "NSInstagram/NSInstagram-Info.plist";
@@ -462,6 +548,7 @@
 				BACE2BE819A2B71C001B8858 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BACE2BE919A2B71C001B8858 /* Build configuration list for PBXNativeTarget "NSInstagramTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +557,7 @@
 				BACE2BEB19A2B71C001B8858 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
