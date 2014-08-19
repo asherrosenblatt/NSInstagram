@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.profileImageView setImage:[UIImage imageNamed:@"blankProfile"]];
 
 }
 
