@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UserProfileViewController : UIViewController
-@property PFUser *currentUser;
+
 @end

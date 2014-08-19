@@ -79,12 +79,27 @@
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     UIImage *image = [UIImage imageNamed:@"profilePicture"];
-    [PFUser currentUser][@"profilePicture"] = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    [PFUser currentUser][@"profilePicture"] = [PFFile fileWithData: imageData];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR");
+        } else {
+            NSLog(@"Photo added");
+        }
+    }];
+    [[PFUser currentUser] save];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
 
+<<<<<<< HEAD
 
+=======
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+>>>>>>> 1dc88b04f3a733c0cd5cfae70bafa68dab28d158
 
 #pragma mark - userProfile methods
 
@@ -102,15 +117,15 @@
     // Dismiss the image selection, hide the picker and
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
     self.profileImageView.image = [UIImage imageWithData:imageData];
-    self.currentUser[@"profilePicture"] = imageData;
-    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [PFUser currentUser][@"profilePicture"] = [PFFile fileWithData: imageData];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             NSLog(@"ERROR");
         } else {
             NSLog(@"Photo added");
         }
     }];
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
     //UIImage *newImage = image;
 }
 
@@ -126,6 +141,11 @@
 }
 
 -(IBAction)unwindFromEditProfile:(UIStoryboardSegue *)segue
+{
+    
+}
+
+-(IBAction)unwindFromEditViaCancel:(UIStoryboardSegue *)segue
 {
     
 }
