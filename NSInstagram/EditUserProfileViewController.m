@@ -41,10 +41,11 @@
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
     self.editProfileImageView.image = [UIImage imageWithData:imageData];
     [PFUser currentUser][@"profilePicture"] = imageData;
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        self.editProfileImageView.image = [UIImage imageWithData:[PFUser currentUser][@"profilePicture"]];
+    }];
     [picker dismissModalViewControllerAnimated:YES];
     //UIImage *newImage = image;
-
-
 }
 
 @end

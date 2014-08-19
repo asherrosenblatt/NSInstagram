@@ -80,6 +80,7 @@
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     UIImage *image = [UIImage imageNamed:@"profilePicture"];
     [PFUser currentUser][@"profilePicture"] = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    [[PFUser currentUser] save];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
@@ -112,7 +113,7 @@
             NSLog(@"Photo added");
         }
     }];
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
     //UIImage *newImage = image;
 }
 
