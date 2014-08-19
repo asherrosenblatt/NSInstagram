@@ -17,12 +17,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.profileImageView setImage:[UIImage imageNamed:@"blankProfile"]];
+    [self.profileImageView setImage:[UIImage imageNamed:[PFUser currentUser][@"profilePicture"]]];
 
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    self.profileImageView.image = [UIImage imageWithData:[PFUser currentUser][@"profilePicture"]];
 
     if (![PFUser currentUser]) {
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
@@ -77,8 +78,10 @@
 }
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-
-    [self dismissModalViewControllerAnimated:YES];
+    UIImage *image = [UIImage imageNamed:@"profilePicture"];
+    [PFUser currentUser][@"profilePicture"] = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
@@ -88,17 +91,11 @@
 #pragma mark - userProfile methods
 
 
-- (IBAction)onProfileImageTapped:(id)sender
+- (IBAction)onEditProfileButtonPressed:(id)sender
 {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
-    imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.delegate = self;
-    imagePickerController.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
-
-    [self presentViewController:imagePickerController animated:YES completion:^{
-
-    }];
+    NSLog(@"picture pressed!");
 }
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker
         didFinishPickingImage:(UIImage *)image
@@ -128,6 +125,11 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 0;
+}
+
+-(IBAction)unwindFromEditProfile:(UIStoryboardSegue *)segue
+{
+    
 }
 
 

@@ -36,6 +36,7 @@
 		BACE2C0419A2BD2E001B8858 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0319A2BD2E001B8858 /* StoreKit.framework */; };
 		BACE2C0619A2BD90001B8858 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0519A2BD90001B8858 /* QuartzCore.framework */; };
 		BACE2C0819A2BDA4001B8858 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */; };
+		BAD7773E19A3E8D40091D0D2 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		BACE2C0319A2BD2E001B8858 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BACE2C0519A2BD90001B8858 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BAD7773C19A3E8D40091D0D2 /* EditUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserProfileViewController.h; sourceTree = "<group>"; };
+		BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 				BACE2BC319A2B71C001B8858 /* AppDelegate.h */,
 				BACE2BC419A2B71C001B8858 /* AppDelegate.m */,
 				BACE2BC619A2B71C001B8858 /* Main.storyboard */,
+				BAD7773C19A3E8D40091D0D2 /* EditUserProfileViewController.h */,
+				BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */,
 				BACE2BEC19A2BB3F001B8858 /* AddPhotoViewController.h */,
 				BACE2BED19A2BB3F001B8858 /* AddPhotoViewController.m */,
 				BACE2BCC19A2B71C001B8858 /* ActivityFeedViewController.h */,
@@ -316,6 +321,7 @@
 				BACE2BC519A2B71C001B8858 /* AppDelegate.m in Sources */,
 				BACE2BCB19A2B71C001B8858 /* UserProfileViewController.m in Sources */,
 				BACE2BC119A2B71C001B8858 /* main.m in Sources */,
+				BAD7773E19A3E8D40091D0D2 /* EditUserProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
