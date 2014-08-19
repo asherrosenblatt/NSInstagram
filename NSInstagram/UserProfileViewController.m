@@ -79,14 +79,22 @@
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     UIImage *image = [UIImage imageNamed:@"profilePicture"];
-    [PFUser currentUser][@"profilePicture"] = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    [PFUser currentUser][@"profilePicture"] = [PFFile fileWithData: imageData];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR");
+        } else {
+            NSLog(@"Photo added");
+        }
+    }];
     [[PFUser currentUser] save];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - userProfile methods
@@ -105,8 +113,8 @@
     // Dismiss the image selection, hide the picker and
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
     self.profileImageView.image = [UIImage imageWithData:imageData];
-    self.currentUser[@"profilePicture"] = imageData;
-    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [PFUser currentUser][@"profilePicture"] = [PFFile fileWithData: imageData];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             NSLog(@"ERROR");
         } else {
