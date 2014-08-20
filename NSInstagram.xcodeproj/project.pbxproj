@@ -37,6 +37,7 @@
 		BACE2C0619A2BD90001B8858 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0519A2BD90001B8858 /* QuartzCore.framework */; };
 		BACE2C0819A2BDA4001B8858 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */; };
 		BAD7773E19A3E8D40091D0D2 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */; };
+		DD361A9619A51CF500958CA4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD361A9519A51CF500958CA4 /* SearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BAD7773C19A3E8D40091D0D2 /* EditUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserProfileViewController.h; sourceTree = "<group>"; };
 		BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileViewController.m; sourceTree = "<group>"; };
+		DD361A9419A51CF500958CA4 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		DD361A9519A51CF500958CA4 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +179,8 @@
 				BACE2BC319A2B71C001B8858 /* AppDelegate.h */,
 				BACE2BC419A2B71C001B8858 /* AppDelegate.m */,
 				BACE2BC619A2B71C001B8858 /* Main.storyboard */,
+				DD361A9419A51CF500958CA4 /* SearchViewController.h */,
+				DD361A9519A51CF500958CA4 /* SearchViewController.m */,
 				BAD7773C19A3E8D40091D0D2 /* EditUserProfileViewController.h */,
 				BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */,
 				BACE2BEC19A2BB3F001B8858 /* AddPhotoViewController.h */,
@@ -322,6 +327,7 @@
 				BACE2BCB19A2B71C001B8858 /* UserProfileViewController.m in Sources */,
 				BACE2BC119A2B71C001B8858 /* main.m in Sources */,
 				BAD7773E19A3E8D40091D0D2 /* EditUserProfileViewController.m in Sources */,
+				DD361A9619A51CF500958CA4 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

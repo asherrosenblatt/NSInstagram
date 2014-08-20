@@ -212,6 +212,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="onDoneButtonPressed:" destination="pVi-VR-ehh" eventType="touchUpInside" id="lnJ-mc-W11"/>
                                     <segue destination="OCO-uP-Lds" kind="unwind" unwindAction="unwindFromEditProfile:" id="Ppx-i1-3BF"/>
                                 </connections>
                             </button>
@@ -308,10 +309,10 @@
             </objects>
             <point key="canvasLocation" x="670" y="180"/>
         </scene>
-        <!--View Controller - Search-->
+        <!--Search View Controller - Search for Users-->
         <scene sceneID="ANY-NC-pFg">
             <objects>
-                <viewController id="fzh-rh-lgn" sceneMemberID="viewController">
+                <viewController id="fzh-rh-lgn" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8t8-bM-Rba"/>
                         <viewControllerLayoutGuide type="bottom" id="V5o-mf-cBw"/>
@@ -319,11 +320,34 @@
                     <view key="view" contentMode="scaleToFill" id="rfB-I2-59Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Npp-AQ-oh7">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fzh-rh-lgn" id="Shf-Sd-mpt"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="ysg-Sd-OEo"/>
+                    <navigationItem key="navigationItem" title="Search for Users" id="ysg-Sd-OEo"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Npp-AQ-oh7" id="Pdk-GF-WN6"/>
+                        <outlet property="searchDisplayController" destination="a7j-Wb-C0L" id="bcT-Nr-CFN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWT-dR-3t8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="a7j-Wb-C0L">
+                    <connections>
+                        <outlet property="delegate" destination="fzh-rh-lgn" id="VnE-sT-Lie"/>
+                        <outlet property="searchBar" destination="Npp-AQ-oh7" id="JXv-3j-wCX"/>
+                        <outlet property="searchContentsController" destination="fzh-rh-lgn" id="TkV-51-s0j"/>
+                        <outlet property="searchResultsDataSource" destination="fzh-rh-lgn" id="ciU-Km-xRE"/>
+                        <outlet property="searchResultsDelegate" destination="fzh-rh-lgn" id="g7o-xx-awl"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1196" y="1528"/>
         </scene>

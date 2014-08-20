@@ -17,6 +17,8 @@
 @end
 
 @implementation EditUserProfileViewController
+- (IBAction)onDoneButtonPressed:(UIButton *)sender {
+}
 
 - (void)viewDidLoad
 {
