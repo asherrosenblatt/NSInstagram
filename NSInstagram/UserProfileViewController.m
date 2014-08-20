@@ -17,6 +17,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.currentUserForProfile = [PFUser currentUser];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    PFFile *imageFile = [self.currentUserForProfile objectForKey:@"profilePicture"];
+
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *profileImage = [[UIImage alloc]init];
+        profileImage = [UIImage imageWithData:data];
+        if (profileImage) {
+            self.profileImageView.image = profileImage;
+        }
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -92,8 +106,9 @@
 }
 
 
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+       [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - userProfile methods

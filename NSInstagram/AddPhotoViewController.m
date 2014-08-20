@@ -55,6 +55,9 @@
     PFFile *file = [PFFile fileWithData:imageData];
     photo[@"image"] = file;
     photo[@"user"] = [PFUser currentUser];
+    //PFUser *user = [PFUser currentUser];
+    //[photo setObject:file forKey:@"image"];
+    // [photo setObject:user forKey:@"user"];
     [photo saveInBackground];
     [picker dismissModalViewControllerAnimated:YES];
     //UIImage *newImage = image;

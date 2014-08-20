@@ -18,8 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSData *imageData = [PFUser currentUser][@"profilePicture"];
-    self.editProfileImageView.image = [UIImage imageWithData:imageData];
+    //NSData *imageData = [PFUser currentUser][@"profilePicture"];
+   // self.editProfileImageView.image = [UIImage imageWithData:imageData];
 }
 
 - (IBAction)onChooseImageButtonPressed:(id)sender
