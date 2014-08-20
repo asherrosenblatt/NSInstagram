@@ -7,6 +7,7 @@
 //
 
 #import "UserProfileViewController.h"
+#import "EditUserProfileViewController.h"
 
 @interface UserProfileViewController ()<UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -23,13 +24,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     PFFile *imageFile = [self.currentUserForProfile objectForKey:@"profilePicture"];
-
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
         self.profileImageView.image = profileImage;
         NSLog(@"throught the block");
-
     }];
 }
 

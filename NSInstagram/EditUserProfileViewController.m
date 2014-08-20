@@ -21,8 +21,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //NSData *imageData = [PFUser currentUser][@"profilePicture"];
-   // self.editProfileImageView.image = [UIImage imageWithData:imageData];
+    //load the picture into the edit thumbnail
+    PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePicture"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *profileImage = [[UIImage alloc]init];
+        profileImage = [UIImage imageWithData:data];
+        if (profileImage) {
+            self.editProfileImageView.image = profileImage;
+        }
+    }];
+    self.usernameTextField.text = [PFUser currentUser].username;
+    self.emailTextField.text = [PFUser currentUser].email;
+    self.passwordTextField.text = @"password";
 }
 
 - (IBAction)onChooseImageButtonPressed:(id)sender
