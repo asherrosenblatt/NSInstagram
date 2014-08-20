@@ -7,10 +7,13 @@
 //
 
 #import "SearchViewController.h"
+#import "SearchTableViewCell.h"
 
 
-@interface SearchViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UISearchBar *seachBar;
+@property (weak, nonatomic) IBOutlet UITableView *searchTableView;
+
 
 @end
 
@@ -21,6 +24,23 @@
 {
     [super viewDidLoad];
 }
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SearchTableViewCell *cell = [self.searchTableView dequeueReusableCellWithIdentifier:@"searchCell"];
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+ -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+
 
 
 @end

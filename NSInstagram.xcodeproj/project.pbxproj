@@ -38,6 +38,7 @@
 		BACE2C0819A2BDA4001B8858 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */; };
 		BAD7773E19A3E8D40091D0D2 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */; };
 		DD361A9619A51CF500958CA4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD361A9519A51CF500958CA4 /* SearchViewController.m */; };
+		DD361A9C19A5251500958CA4 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD361A9B19A5251500958CA4 /* SearchTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileViewController.m; sourceTree = "<group>"; };
 		DD361A9419A51CF500958CA4 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		DD361A9519A51CF500958CA4 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		DD361A9A19A5251500958CA4 /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		DD361A9B19A5251500958CA4 /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +182,8 @@
 				BACE2BC319A2B71C001B8858 /* AppDelegate.h */,
 				BACE2BC419A2B71C001B8858 /* AppDelegate.m */,
 				BACE2BC619A2B71C001B8858 /* Main.storyboard */,
+				DD361A9A19A5251500958CA4 /* SearchTableViewCell.h */,
+				DD361A9B19A5251500958CA4 /* SearchTableViewCell.m */,
 				DD361A9419A51CF500958CA4 /* SearchViewController.h */,
 				DD361A9519A51CF500958CA4 /* SearchViewController.m */,
 				BAD7773C19A3E8D40091D0D2 /* EditUserProfileViewController.h */,
@@ -322,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BACE2BCE19A2B71C001B8858 /* ActivityFeedViewController.m in Sources */,
+				DD361A9C19A5251500958CA4 /* SearchTableViewCell.m in Sources */,
 				BACE2BEE19A2BB3F001B8858 /* AddPhotoViewController.m in Sources */,
 				BACE2BC519A2B71C001B8858 /* AppDelegate.m in Sources */,
 				BACE2BCB19A2B71C001B8858 /* UserProfileViewController.m in Sources */,
