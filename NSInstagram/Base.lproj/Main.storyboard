@@ -220,6 +220,9 @@
                     </view>
                     <connections>
                         <outlet property="editProfileImageView" destination="GMJ-Id-Mqu" id="PYI-9l-wvP"/>
+                        <outlet property="emailTextField" destination="JTu-pi-8S1" id="KgT-7X-UM6"/>
+                        <outlet property="passwordTextField" destination="ZFS-mJ-p4b" id="CE0-G9-Jrh"/>
+                        <outlet property="usernameTextField" destination="Aro-l8-IoT" id="ETm-Eh-UO0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SrQ-JO-Vvj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -259,12 +262,13 @@
                     <connections>
                         <segue destination="cx0-yM-bDb" kind="relationship" relationship="viewControllers" id="6ab-Ly-sbA"/>
                         <segue destination="cGs-kC-oQo" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
+                        <segue destination="ejY-Pz-clP" kind="relationship" relationship="viewControllers" id="1AA-js-0kk"/>
                         <segue destination="g0a-zg-eTT" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="180"/>
+            <point key="canvasLocation" x="-40" y="224"/>
         </scene>
         <!--Navigation Controller - Add Photo-->
         <scene sceneID="8HV-hk-chT">
@@ -285,11 +289,11 @@
             </objects>
             <point key="canvasLocation" x="670" y="-476"/>
         </scene>
-        <!--Navigation Controller - Second-->
+        <!--Navigation Controller - Activity Feed-->
         <scene sceneID="beS-vO-zSO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cGs-kC-oQo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Activity Feed" image="second" id="Z7h-1E-pvt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jWg-eG-SWZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -304,11 +308,30 @@
             </objects>
             <point key="canvasLocation" x="670" y="180"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--View Controller - Search-->
+        <scene sceneID="ANY-NC-pFg">
+            <objects>
+                <viewController id="fzh-rh-lgn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8t8-bM-Rba"/>
+                        <viewControllerLayoutGuide type="bottom" id="V5o-mf-cBw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rfB-I2-59Y">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="ysg-Sd-OEo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LWT-dR-3t8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1196" y="1528"/>
+        </scene>
+        <!--Navigation Controller - Profile-->
         <scene sceneID="Mzb-bk-SiO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cx0-yM-bDb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="W8r-lI-oOT"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="W8r-lI-oOT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IZT-Az-wHg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -322,6 +345,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lu8-A0-jcu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="670" y="841"/>
+        </scene>
+        <!--Navigation Controller - Search-->
+        <scene sceneID="htX-Ui-Q75">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ejY-Pz-clP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" id="c6j-TF-AwK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bo6-fD-t9Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fzh-rh-lgn" kind="relationship" relationship="rootViewController" id="tZb-g6-TaE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29d-cL-PVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="676" y="1558"/>
         </scene>
     </scenes>
     <resources>
