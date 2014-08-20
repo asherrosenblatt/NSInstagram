@@ -199,7 +199,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OCO-uP-Lds" kind="unwind" unwindAction="unwindFromEditProfile:" id="gYu-pn-Bef"/>
+                                    <segue destination="OCO-uP-Lds" kind="unwind" unwindAction="unwindFromEditProfile:" id="Ppx-i1-3BF"/>
                                 </connections>
                             </button>
                         </subviews>
