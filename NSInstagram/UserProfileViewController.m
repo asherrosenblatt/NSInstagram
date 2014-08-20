@@ -193,6 +193,7 @@
         if (image) {
             cell.imageView.image = image;
         }
+        [self.userImagesTableView reloadData];
     }];
     return cell;
 }
