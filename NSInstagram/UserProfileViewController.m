@@ -27,9 +27,9 @@
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
-        if (profileImage) {
-            self.profileImageView.image = profileImage;
-        }
+        self.profileImageView.image = profileImage;
+        NSLog(@"throught the block");
+
     }];
 }
 
@@ -108,11 +108,36 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
 {
-       [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"DID LOG IN USER");
+    PFFile *imageFile = [self.currentUserForProfile objectForKey:@"profilePicture"];
+
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *profileImage = [[UIImage alloc]init];
+        profileImage = [UIImage imageWithData:data];
+        if (profileImage) {
+            self.profileImageView.image = profileImage;
+        }
+    }];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - userProfile methods
 
+- (IBAction)onLogOutPressed:(id)sender
+{
+    [PFUser logOut];
+    if (![PFUser currentUser]) {
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        [logInViewController setFields: PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsPasswordForgotten];
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self];
+        [signUpViewController setFields: PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsSignUpButton];
+        [logInViewController setSignUpController:signUpViewController];
+        [self presentViewController:logInViewController animated:NO completion:NULL];
+    }
+}
 
 - (IBAction)onEditProfileButtonPressed:(id)sender
 {
