@@ -17,7 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.profileImageView.image = [UIImage imageWithData:[PFUser currentUser][@"profilePicture"]];
 
 }
 
