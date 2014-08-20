@@ -7,12 +7,12 @@
 //
 
 #import "UserProfileViewController.h"
-#import "EditUserProfileViewController.h"
 
 @interface UserProfileViewController ()<UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) IBOutlet UILabel *userBioLabel;
 @property (strong, nonatomic) IBOutlet UITableView *userImagesTableView;
+@property NSArray *currentUserImagesArray;
 @end
 
 @implementation UserProfileViewController
@@ -20,6 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self queryCurrentUserImages];
     self.currentUserForProfile = [PFUser currentUser];
 }
 
@@ -167,15 +168,38 @@
     //UIImage *newImage = image;
 }
 
+-(void)queryCurrentUserImages
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"user = %@", [PFUser currentUser]];
+    PFQuery *query = [PFQuery queryWithClassName:@"Photo" predicate:predicate];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"%@", objects);
+        self.currentUserImagesArray = [NSArray new];
+        self.currentUserImagesArray = objects;
+        [self.userImagesTableView reloadData];
+    }];
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imageCell"];
+    PFObject *imageObject = [PFObject objectWithClassName:@"Photo"];
+    imageObject = [self.currentUserImagesArray objectAtIndex:indexPath.row];
+    PFFile *imageFile = [imageObject objectForKey:@"image"];
+
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *image = [[UIImage alloc]init];
+        image = [UIImage imageWithData:data];
+        if (image) {
+            cell.imageView.image = image;
+        }
+    }];
+    return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.currentUserImagesArray.count;
 }
 
 -(IBAction)unwindFromEditProfile:(UIStoryboardSegue *)segue
