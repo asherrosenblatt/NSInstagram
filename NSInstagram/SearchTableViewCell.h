@@ -10,4 +10,5 @@
 
 @interface SearchTableViewCell : UITableViewCell
 
+
 @end

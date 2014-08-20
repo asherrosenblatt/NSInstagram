@@ -353,7 +353,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search for Users" id="ysg-Sd-OEo"/>
                     <connections>
-                        <outlet property="seachBar" destination="B3h-ci-sK8" id="zPn-oY-cFA"/>
+                        <outlet property="searchBar" destination="B3h-ci-sK8" id="xaf-PH-DSv"/>
                         <outlet property="searchDisplayController" destination="a7j-Wb-C0L" id="bcT-Nr-CFN"/>
                         <outlet property="searchTableView" destination="HxJ-zg-laS" id="iRu-KP-PeR"/>
                     </connections>
