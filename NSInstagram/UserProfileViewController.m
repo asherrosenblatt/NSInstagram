@@ -93,13 +93,10 @@
     }];
 }
 
-<<<<<<< HEAD
 
-=======
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
->>>>>>> 1dc88b04f3a733c0cd5cfae70bafa68dab28d158
 
 #pragma mark - userProfile methods
 
