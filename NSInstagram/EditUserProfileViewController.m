@@ -40,10 +40,17 @@
     // Dismiss the image selection, hide the picker and
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
     self.editProfileImageView.image = [UIImage imageWithData:imageData];
-    [PFUser currentUser][@"profilePicture"] = imageData;
+    PFFile *file = [PFFile fileWithData:imageData];
+    PFUser *user = [PFUser currentUser];
+    [user setObject:file forKey:@"profilePicture"];
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        self.editProfileImageView.image = [UIImage imageWithData:[PFUser currentUser][@"profilePicture"]];
+        if (error) {
+            NSLog(@"ERROR");
+        } else {
+            NSLog(@"Photo added");
+        }
     }];
+
     [picker dismissModalViewControllerAnimated:YES];
     //UIImage *newImage = image;
 }

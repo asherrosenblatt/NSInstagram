@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.profileImageView setImage:[UIImage imageNamed:[PFUser currentUser][@"profilePicture"]]];
+    self.profileImageView.image = [UIImage imageNamed:[PFUser currentUser][@"profilePicture"]];
 
 }
 
@@ -78,19 +78,20 @@
 }
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-    UIImage *image = [UIImage imageNamed:@"profilePicture"];
-    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
-    [PFUser currentUser][@"profilePicture"] = [PFFile fileWithData: imageData];
-    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            NSLog(@"ERROR");
-        } else {
-            NSLog(@"Photo added");
-        }
-    }];
-    [[PFUser currentUser] save];
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
+//    UIImage *image = [UIImage imageNamed:@"profilePicture"];
+//    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+////    self.editProfileImageView.image = [UIImage imageWithData:imageData];
+//    PFFile *file = [PFFile fileWithData:imageData];
+//    PFUser *currentUser = [PFUser currentUser];
+//    [currentUser setObject:file forKey:@"profilePicture"];
+//    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (error) {
+//            NSLog(@"ERROR");
+//        } else {
+//            NSLog(@"Photo added");
+//        }
+//    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -114,7 +115,9 @@
     // Dismiss the image selection, hide the picker and
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
     self.profileImageView.image = [UIImage imageWithData:imageData];
-    [PFUser currentUser][@"profilePicture"] = [PFFile fileWithData: imageData];
+    PFFile *file = [PFFile fileWithData:imageData];
+    PFUser *user = [PFUser currentUser];
+    [user setObject:file forKey:@"profilePicture"];
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             NSLog(@"ERROR");
