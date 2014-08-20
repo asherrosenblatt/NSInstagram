@@ -17,7 +17,20 @@
 @end
 
 @implementation EditUserProfileViewController
-- (IBAction)onDoneButtonPressed:(UIButton *)sender {
+- (IBAction)onDoneButtonPressed:(UIButton *)sender
+{
+    if (![[PFUser currentUser].username isEqualToString:self.usernameTextField.text]) {
+        [[PFUser currentUser] setUsername:self.usernameTextField.text];
+    } if (![[PFUser currentUser].email isEqualToString:self.emailTextField.text]) {
+        [[PFUser currentUser] setEmail:self.emailTextField.text];
+    } if (![self.passwordTextField.text isEqualToString:@"password"]) {
+        [[PFUser currentUser] setPassword:self.passwordTextField.text];
+        NSLog(@"password changed");
+    }
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"changes saved");
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void)viewDidLoad

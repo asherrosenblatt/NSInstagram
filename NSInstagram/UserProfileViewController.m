@@ -11,6 +11,8 @@
 
 @interface UserProfileViewController ()<UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (strong, nonatomic) IBOutlet UILabel *userBioLabel;
+@property (strong, nonatomic) IBOutlet UITableView *userImagesTableView;
 @end
 
 @implementation UserProfileViewController
@@ -34,7 +36,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+
     if (![PFUser currentUser]) {
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
@@ -88,19 +90,19 @@
 }
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-//    UIImage *image = [UIImage imageNamed:@"profilePicture"];
-//    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
-////    self.editProfileImageView.image = [UIImage imageWithData:imageData];
-//    PFFile *file = [PFFile fileWithData:imageData];
-//    PFUser *currentUser = [PFUser currentUser];
-//    [currentUser setObject:file forKey:@"profilePicture"];
-//    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (error) {
-//            NSLog(@"ERROR");
-//        } else {
-//            NSLog(@"Photo added");
-//        }
-//    }];
+    //    UIImage *image = [UIImage imageNamed:@"profilePicture"];
+    //    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    ////    self.editProfileImageView.image = [UIImage imageWithData:imageData];
+    //    PFFile *file = [PFFile fileWithData:imageData];
+    //    PFUser *currentUser = [PFUser currentUser];
+    //    [currentUser setObject:file forKey:@"profilePicture"];
+    //    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //        if (error) {
+    //            NSLog(@"ERROR");
+    //        } else {
+    //            NSLog(@"Photo added");
+    //        }
+    //    }];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -178,7 +180,7 @@
 
 -(IBAction)unwindFromEditProfile:(UIStoryboardSegue *)segue
 {
-    
+
 }
 
 -(IBAction)unwindFromEditViaCancel:(UIStoryboardSegue *)segue
