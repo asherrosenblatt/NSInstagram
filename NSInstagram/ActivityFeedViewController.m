@@ -31,7 +31,7 @@
 {
    // for (PFUser *user in self.followingArray) {
    //     PFUser *searchString = user;
-        PFQuery *query = [PFUser query];
+        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
         [query whereKey:@"user" containedIn:self.followingArray];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             self.photosArray = [[NSArray alloc] initWithArray:objects];
@@ -42,7 +42,13 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@""];
-    
+    PFFile *imageFile = [[self.photosArray objectAtIndex:indexPath.row] objectForKey:@"image"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *image = [[UIImage alloc]init];
+        image = [UIImage imageWithData:data];
+        cell.imageView.image = image;
+        NSLog(@"loaded an image");
+    }];
     return cell;
 }
 
