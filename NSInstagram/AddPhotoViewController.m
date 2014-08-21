@@ -27,6 +27,10 @@
 - (IBAction)onCameraButtonPressed:(UIButton *)sender
 {
 
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.delegate = self;
+    [self presentModalViewController:picker animated:YES];
 
 }
 
@@ -39,10 +43,9 @@
     imagePickerController.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
 
     [self presentViewController:imagePickerController animated:YES completion:nil];
-
-
-
 }
+
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker
         didFinishPickingImage:(UIImage *)image
