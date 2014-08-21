@@ -25,12 +25,14 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    PFFile *imageFile = [self.currentUserForProfile objectForKey:@"profilePicture"];
+    NSLog(@"started view will appear");
+    PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePicture"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
         self.profileImageView.image = profileImage;
         NSLog(@"throught the block");
+        self.navigationController.title = [PFUser currentUser].username;
     }];
 }
 
