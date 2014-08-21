@@ -27,8 +27,16 @@
     [super viewDidLoad];
     self.searchResultsArray = [NSArray new];
 
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(hideKeyBoard)];
 
+    [self.view addGestureRecognizer:tapGesture];
 
+}
+
+-(void)hideKeyBoard {
+    [self.searchBar resignFirstResponder];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

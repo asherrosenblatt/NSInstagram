@@ -25,10 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[PFUser currentUser]addObject:self.clickedUser forKey:@"following"];
-    [[PFUser currentUser]save];
+
     self.user = [PFUser currentUser];
-    NSLog(@"%@",self.clickedUser.username);
     PFFile *file = [self.clickedUser objectForKey:@"profilePicture"];
 
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -41,6 +39,8 @@
 
     [self queryClickedUserImages];
 
+    
+
 
 }
 
@@ -49,7 +49,6 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat: @"user = %@", self.clickedUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Photo" predicate:predicate];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"%@", objects);
         self.clickedUsersPhotos = [NSArray new];
         self.clickedUsersPhotos = objects;
         [self.tableView reloadData];
@@ -87,15 +86,9 @@
 - (IBAction)onFollowButtonPressed:(UIButton *)sender
 {
 
-    //[PFUser currentUser][@"following"]
-    PFQuery *query = [PFUser query];
-    NSString *usernameString = [PFUser currentUser][@"username"];
-    [query whereKey:@"username" containsString:usernameString];
-    [query whereKey:@"status" equalTo:[NSNumber numberWithInt:1]];
+        [[PFUser currentUser]addObject:self.clickedUser forKey:@"following"];
+       [[PFUser currentUser]save];
 
-        self.following = [[NSMutableArray alloc] init];
-        self.following = [[query findObjects]mutableCopy];
-        NSLog(@"MY FOLLOWING IS %@", self.following);
 
 }
 
