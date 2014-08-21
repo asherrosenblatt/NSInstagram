@@ -32,7 +32,7 @@
         profileImage = [UIImage imageWithData:data];
         self.profileImageView.image = profileImage;
         NSLog(@"throught the block");
-        self.navigationController.title = [PFUser currentUser].username;
+        self.navigationItem.title = [PFUser currentUser].username;
     }];
     self.userBioLabel.text = [PFUser currentUser][@"profileBio"];
 }
