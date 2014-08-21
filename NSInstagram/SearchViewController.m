@@ -27,17 +27,14 @@
     [super viewDidLoad];
     self.searchResultsArray = [NSArray new];
 
-    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]
-                                           initWithTarget:self
-                                           action:@selector(hideKeyBoard)];
-
-    [self.view addGestureRecognizer:tapGesture];
-
 }
 
--(void)hideKeyBoard {
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
     [self.searchBar resignFirstResponder];
 }
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -47,6 +44,7 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    
     NSString *searchString = self.searchBar.text;
     PFQuery *query = [PFUser query];
     [query whereKey:@"username" containsString:searchString];

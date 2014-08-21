@@ -14,6 +14,7 @@
 @property PFUser *user;
 @property NSArray *clickedUsersPhotos;
 @property NSMutableArray *following;
+@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 
 
 @end
@@ -38,6 +39,9 @@
     }];
 
     [self queryClickedUserImages];
+
+    self.navigationItem.title = self.clickedUser.username;
+    self.bioLabel.text = [self.clickedUser objectForKey:@"profileBio"];
 
     
 
