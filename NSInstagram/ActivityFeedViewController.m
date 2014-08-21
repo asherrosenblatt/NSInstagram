@@ -33,15 +33,15 @@
 
 -(void)fetchTheUsersImages
 {
-  // for (PFUser *user in self.followingArray) {
-        //PFUser *searchString = user;
+   for (PFUser *user in self.followingArray) {
+       // PFUser *searchString = user;
        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
-      [query whereKey:@"user" containedIn:self.followingArray];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+      //[query whereKey:@"user" containsString:user.username];
+      [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
        self.photosArray = [NSArray arrayWithArray:objects];
              [self.tableView reloadData];
         }];
-   // }
+   }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,7 +54,9 @@
         cell.imageView.image = image;
         NSLog(@"loaded an image");
          [self.tableView reloadData];
+
     }];
+
     return cell;
 
 
