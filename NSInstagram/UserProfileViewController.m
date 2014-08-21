@@ -21,7 +21,6 @@
 {
     [super viewDidLoad];
     [self queryCurrentUserImages];
-    self.currentUserForProfile = [PFUser currentUser];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -91,19 +90,6 @@
 }
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-    //    UIImage *image = [UIImage imageNamed:@"profilePicture"];
-    //    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
-    ////    self.editProfileImageView.image = [UIImage imageWithData:imageData];
-    //    PFFile *file = [PFFile fileWithData:imageData];
-    //    PFUser *currentUser = [PFUser currentUser];
-    //    [currentUser setObject:file forKey:@"profilePicture"];
-    //    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    //        if (error) {
-    //            NSLog(@"ERROR");
-    //        } else {
-    //            NSLog(@"Photo added");
-    //        }
-    //    }];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
