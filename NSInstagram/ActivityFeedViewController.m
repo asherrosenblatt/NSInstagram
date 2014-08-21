@@ -10,7 +10,7 @@
 
 @interface ActivityFeedViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *activityFeedTableView;
-@property NSArray *followingArray;
+@property NSMutableArray *followingArray;
 @property NSArray *photosArray;
 
 @end
@@ -20,11 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    PFObject *followingObject = [PFUser currentUser][@"following"];
-    [followingObject fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        self.followingArray = [object allKeys];
-        NSLog(@"%@", self.followingArray);
-    }];
+    self.followingArray = [PFUser currentUser][@"following"];
+    for (PFUser *user in [PFUser currentUser][@"following"]) {
+        [self.followingArray addObject:user];
+    }
 }
 
 -(void)fetchTheUsersImages
