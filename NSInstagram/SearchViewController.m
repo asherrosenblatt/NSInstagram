@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import "SearchTableViewCell.h"
+#import "SearchedThenChosenThenClickedUserViewController.h"
 
 
 @interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -28,6 +29,12 @@
 
 
 
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SearchedThenChosenThenClickedUserViewController *dvc = segue.destinationViewController;
+    dvc.clickedUser = [self.searchResultsArray objectAtIndex:[self.searchTableView indexPathForSelectedRow].row];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
