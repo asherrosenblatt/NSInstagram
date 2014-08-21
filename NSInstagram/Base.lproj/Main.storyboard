@@ -296,6 +296,7 @@
                     <navigationItem key="navigationItem" id="HYX-Mr-WE9"/>
                     <connections>
                         <outlet property="activityFeedTableView" destination="hfe-zl-bEs" id="jqN-qD-Lq3"/>
+                        <outlet property="tableView" destination="hfe-zl-bEs" id="lrz-tX-xan"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
