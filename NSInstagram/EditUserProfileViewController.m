@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet UITextField *bioTextField;
 
 @end
 
@@ -25,6 +26,9 @@
         [[PFUser currentUser] setEmail:self.emailTextField.text];
     } if (![self.passwordTextField.text isEqualToString:@"password"]) {
         [[PFUser currentUser] setPassword:self.passwordTextField.text];
+        NSLog(@"password changed");
+    } if (![[PFUser currentUser][@"profileBio"] isEqualToString:self.bioTextField.text]) {
+        [[PFUser currentUser] setObject:self.bioTextField.text forKey:@"profileBio"];
         NSLog(@"password changed");
     }
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -45,6 +49,7 @@
             self.editProfileImageView.image = profileImage;
         }
     }];
+    self.bioTextField.text = [PFUser currentUser][@"profileBio"];
     self.usernameTextField.text = [PFUser currentUser].username;
     self.emailTextField.text = [PFUser currentUser].email;
     self.passwordTextField.text = @"password";

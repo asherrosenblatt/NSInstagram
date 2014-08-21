@@ -10,7 +10,7 @@
 
 @interface ActivityFeedViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *activityFeedTableView;
-@property NSArray *followingArray;
+@property NSMutableArray *followingArray;
 @property NSArray *photosArray;
 
 @end
@@ -20,18 +20,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    PFObject *followingObject = [PFUser currentUser][@"following"];
-    [followingObject fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        self.followingArray = [object allKeys];
-        NSLog(@"%@", self.followingArray);
-    }];
+    self.followingArray = [PFUser currentUser][@"following"];
+    for (PFUser *user in [PFUser currentUser][@"following"]) {
+        [self.followingArray addObject:user];
+    }
 }
 
 -(void)fetchTheUsersImages
 {
    // for (PFUser *user in self.followingArray) {
    //     PFUser *searchString = user;
-        PFQuery *query = [PFUser query];
+        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
         [query whereKey:@"user" containedIn:self.followingArray];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             self.photosArray = [[NSArray alloc] initWithArray:objects];
@@ -42,7 +41,13 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@""];
-    
+    PFFile *imageFile = [[self.photosArray objectAtIndex:indexPath.row] objectForKey:@"image"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *image = [[UIImage alloc]init];
+        image = [UIImage imageWithData:data];
+        cell.imageView.image = image;
+        NSLog(@"loaded an image");
+    }];
     return cell;
 }
 

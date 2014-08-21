@@ -34,6 +34,7 @@
         NSLog(@"throught the block");
         self.navigationController.title = [PFUser currentUser].username;
     }];
+    self.userBioLabel.text = [PFUser currentUser][@"profileBio"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
