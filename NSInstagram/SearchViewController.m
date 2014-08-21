@@ -27,9 +27,14 @@
     [super viewDidLoad];
     self.searchResultsArray = [NSArray new];
 
-
-
 }
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+}
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -39,6 +44,7 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    
     NSString *searchString = self.searchBar.text;
     PFQuery *query = [PFUser query];
     [query whereKey:@"username" containsString:searchString];
