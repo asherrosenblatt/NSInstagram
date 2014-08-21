@@ -9,7 +9,6 @@
 #import "SearchedThenChosenThenClickedUserViewController.h"
 
 @interface SearchedThenChosenThenClickedUserViewController () <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableViewCell *tableViewCell;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property PFUser *user;

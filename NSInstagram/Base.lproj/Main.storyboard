@@ -464,7 +464,6 @@
                     <connections>
                         <outlet property="imageView" destination="vkG-BM-24Y" id="Men-EH-cey"/>
                         <outlet property="tableView" destination="aDI-HY-RL7" id="yFv-vh-Rvf"/>
-                        <outlet property="tableViewCell" destination="aLl-P7-cJe" id="Gsc-Gj-NGY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKG-ru-U02" userLabel="First Responder" sceneMemberID="firstResponder"/>
