@@ -74,9 +74,10 @@
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
+        cell.imageView.clipsToBounds = YES;
+        cell.imageView.layer.cornerRadius = 20;
         cell.imageView.image = profileImage;
         [self.searchTableView reloadData];
-
     }];
 
 

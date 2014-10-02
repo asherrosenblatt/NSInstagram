@@ -7,14 +7,17 @@
 //
 
 #import "SearchedThenChosenThenClickedUserViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SearchedThenChosenThenClickedUserViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property PFUser *user;
 @property NSArray *clickedUsersPhotos;
-@property NSMutableArray *following;
+@property NSArray *following;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *profileHeaderImageView;
+@property (strong, nonatomic) IBOutlet UIButton *followButton;
 
 
 @end
@@ -26,11 +29,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.following = [[NSArray alloc] initWithArray:[PFUser currentUser][@"following"]];
+    self.imageView.clipsToBounds = YES;
+    self.imageView.layer.cornerRadius = 25;
     self.user = [PFUser currentUser];
-    PFFile *file = [self.clickedUser objectForKey:@"profilePicture"];
+    PFFile *profileImageFile = [self.clickedUser objectForKey:@"profilePicture"];
 
-    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+    [profileImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *profileImage = [[UIImage alloc]init];
+        profileImage = [UIImage imageWithData:data];
+        if (profileImage) {
+            self.imageView.image = profileImage;
+        }
+    }];
+    PFFile *profileHeaderFile = [self.clickedUser objectForKey:@"headerPicture"];
+
+    [profileHeaderFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
         if (profileImage) {
@@ -42,10 +56,6 @@
 
     self.navigationItem.title = self.clickedUser.username;
     self.bioLabel.text = [self.clickedUser objectForKey:@"profileBio"];
-
-    
-
-
 }
 
 -(void)queryClickedUserImages
@@ -58,6 +68,7 @@
         [self.tableView reloadData];
     }];
 }
+
 
 #pragma mark TableView Delegate Methods
 
@@ -89,10 +100,28 @@
 
 - (IBAction)onFollowButtonPressed:(UIButton *)sender
 {
-
-        [[PFUser currentUser]addObject:self.clickedUser forKey:@"following"];
-       [[PFUser currentUser]save];
-
+//    NSArray *followingArray = [NSArray arrayWithArray:[[PFUser currentUser] objectForKey:@"following"]];
+//    if ([followingArray containsObject:self.clickedUser]) {
+//        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Follow them again?" message:@"You're already following this person!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+//        [alertView show];
+//    } else {
+//        [[PFUser currentUser]addObject:self.clickedUser forKey:@"following"];
+//       [[PFUser currentUser]saveInBackground];
+//    }
+    self.following = [PFUser currentUser][@"following"];
+    if ([self.following containsObject:self.clickedUser]) {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Follow them again?" message:@"You're already following this person!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+        [alertView show];
+    }
+    else if (![self.following containsObject:self.clickedUser])
+    {
+        [[PFUser currentUser] addObject:self.clickedUser forKey:@"following"];
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            self.following = [NSArray arrayWithArray:[PFUser currentUser][@"following"]];
+            self.followButton.titleLabel.text = @"Following!";
+            self.followButton.backgroundColor = [UIColor grayColor];
+        }];
+    }
 
 }
 

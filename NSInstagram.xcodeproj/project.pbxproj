@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0609FD19DC50AB002B8586 /* FollowingTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA0609FC19DC50AB002B8586 /* FollowingTableTableViewController.m */; };
+		BA70246219D5C0A300EABBD9 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA70246119D5C0A300EABBD9 /* CoreImage.framework */; };
 		BACE2BB519A2B71C001B8858 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB419A2B71C001B8858 /* Foundation.framework */; };
 		BACE2BB719A2B71C001B8858 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB619A2B71C001B8858 /* CoreGraphics.framework */; };
 		BACE2BB919A2B71C001B8858 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB819A2B71C001B8858 /* UIKit.framework */; };
@@ -36,7 +38,10 @@
 		BACE2C0419A2BD2E001B8858 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0319A2BD2E001B8858 /* StoreKit.framework */; };
 		BACE2C0619A2BD90001B8858 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0519A2BD90001B8858 /* QuartzCore.framework */; };
 		BACE2C0819A2BDA4001B8858 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */; };
+		BAD1BA2C19A83EC0009B77F9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD1BA2B19A83EC0009B77F9 /* LoginViewController.m */; };
+		BAD1BA2F19A83F44009B77F9 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD1BA2E19A83F44009B77F9 /* SignUpViewController.m */; };
 		BAD7773E19A3E8D40091D0D2 /* EditUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */; };
+		BAFC1E1619D1F75300B4E51A /* SearchedUserThenPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFC1E1519D1F75300B4E51A /* SearchedUserThenPhotosViewController.m */; };
 		DD361A9619A51CF500958CA4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD361A9519A51CF500958CA4 /* SearchViewController.m */; };
 		DD361A9C19A5251500958CA4 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD361A9B19A5251500958CA4 /* SearchTableViewCell.m */; };
 		DD361A9F19A6460800958CA4 /* SearchedThenChosenThenClickedUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD361A9E19A6460800958CA4 /* SearchedThenChosenThenClickedUserViewController.m */; };
@@ -53,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA0609FB19DC50AB002B8586 /* FollowingTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowingTableTableViewController.h; sourceTree = "<group>"; };
+		BA0609FC19DC50AB002B8586 /* FollowingTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowingTableTableViewController.m; sourceTree = "<group>"; };
+		BA70246119D5C0A300EABBD9 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		BACE2BB119A2B71C001B8858 /* NSInstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSInstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BACE2BB419A2B71C001B8858 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BACE2BB619A2B71C001B8858 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,8 +97,14 @@
 		BACE2C0319A2BD2E001B8858 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BACE2C0519A2BD90001B8858 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BAD1BA2A19A83EC0009B77F9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		BAD1BA2B19A83EC0009B77F9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		BAD1BA2D19A83F44009B77F9 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		BAD1BA2E19A83F44009B77F9 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		BAD7773C19A3E8D40091D0D2 /* EditUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserProfileViewController.h; sourceTree = "<group>"; };
 		BAD7773D19A3E8D40091D0D2 /* EditUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserProfileViewController.m; sourceTree = "<group>"; };
+		BAFC1E1419D1F75300B4E51A /* SearchedUserThenPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchedUserThenPhotosViewController.h; sourceTree = "<group>"; };
+		BAFC1E1519D1F75300B4E51A /* SearchedUserThenPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchedUserThenPhotosViewController.m; sourceTree = "<group>"; };
 		DD361A9419A51CF500958CA4 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		DD361A9519A51CF500958CA4 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		DD361A9A19A5251500958CA4 /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
@@ -104,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA70246219D5C0A300EABBD9 /* CoreImage.framework in Frameworks */,
 				BACE2C0819A2BDA4001B8858 /* SystemConfiguration.framework in Frameworks */,
 				BACE2C0619A2BD90001B8858 /* QuartzCore.framework in Frameworks */,
 				BACE2C0019A2BC84001B8858 /* MobileCoreServices.framework in Frameworks */,
@@ -158,6 +173,7 @@
 		BACE2BB319A2B71C001B8858 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA70246119D5C0A300EABBD9 /* CoreImage.framework */,
 				BACE2BEF19A2BB9F001B8858 /* Parse.framework */,
 				BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */,
 				BACE2C0519A2BD90001B8858 /* QuartzCore.framework */,
@@ -185,6 +201,14 @@
 				BACE2BC319A2B71C001B8858 /* AppDelegate.h */,
 				BACE2BC419A2B71C001B8858 /* AppDelegate.m */,
 				BACE2BC619A2B71C001B8858 /* Main.storyboard */,
+				BA0609FB19DC50AB002B8586 /* FollowingTableTableViewController.h */,
+				BA0609FC19DC50AB002B8586 /* FollowingTableTableViewController.m */,
+				BAFC1E1419D1F75300B4E51A /* SearchedUserThenPhotosViewController.h */,
+				BAFC1E1519D1F75300B4E51A /* SearchedUserThenPhotosViewController.m */,
+				BAD1BA2D19A83F44009B77F9 /* SignUpViewController.h */,
+				BAD1BA2E19A83F44009B77F9 /* SignUpViewController.m */,
+				BAD1BA2A19A83EC0009B77F9 /* LoginViewController.h */,
+				BAD1BA2B19A83EC0009B77F9 /* LoginViewController.m */,
 				DD361A9D19A6460800958CA4 /* SearchedThenChosenThenClickedUserViewController.h */,
 				DD361A9E19A6460800958CA4 /* SearchedThenChosenThenClickedUserViewController.m */,
 				DD361A9A19A5251500958CA4 /* SearchTableViewCell.h */,
@@ -281,6 +305,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = MM;
 				TargetAttributes = {
+					BACE2BB019A2B71C001B8858 = {
+						DevelopmentTeam = ESE5F95GWA;
+					};
 					BACE2BD419A2B71C001B8858 = {
 						TestTargetID = BACE2BB019A2B71C001B8858;
 					};
@@ -337,8 +364,12 @@
 				BACE2BC519A2B71C001B8858 /* AppDelegate.m in Sources */,
 				BACE2BCB19A2B71C001B8858 /* UserProfileViewController.m in Sources */,
 				DD361A9F19A6460800958CA4 /* SearchedThenChosenThenClickedUserViewController.m in Sources */,
+				BAFC1E1619D1F75300B4E51A /* SearchedUserThenPhotosViewController.m in Sources */,
 				BACE2BC119A2B71C001B8858 /* main.m in Sources */,
 				BAD7773E19A3E8D40091D0D2 /* EditUserProfileViewController.m in Sources */,
+				BAD1BA2C19A83EC0009B77F9 /* LoginViewController.m in Sources */,
+				BA0609FD19DC50AB002B8586 /* FollowingTableTableViewController.m in Sources */,
+				BAD1BA2F19A83F44009B77F9 /* SignUpViewController.m in Sources */,
 				DD361A9619A51CF500958CA4 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +495,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -472,6 +505,7 @@
 				GCC_PREFIX_HEADER = "NSInstagram/NSInstagram-Prefix.pch";
 				INFOPLIST_FILE = "NSInstagram/NSInstagram-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -481,6 +515,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -489,6 +525,7 @@
 				GCC_PREFIX_HEADER = "NSInstagram/NSInstagram-Prefix.pch";
 				INFOPLIST_FILE = "NSInstagram/NSInstagram-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

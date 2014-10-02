@@ -11,7 +11,7 @@
 @interface ActivityFeedViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *activityFeedTableView;
 @property NSMutableArray *followingArray;
-@property NSArray *photosArray;
+@property NSMutableArray *photosArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -27,19 +27,30 @@
 //        [self.followingArray addObject:user];
 //    }
     NSLog(@"%@",self.followingArray);
+    self.photosArray = [NSMutableArray new];
     [self fetchTheUsersImages];
 
+}
+
+- (IBAction)onResfreshPressed:(id)sender
+{
+    self.followingArray = [NSMutableArray arrayWithArray:[PFUser currentUser][@"following"]];
+    [self fetchTheUsersImages];
 }
 
 -(void)fetchTheUsersImages
 {
    for (PFUser *user in self.followingArray) {
-       // PFUser *searchString = user;
        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
-      //[query whereKey:@"user" containsString:user.username];
-      [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-       self.photosArray = [NSArray arrayWithArray:objects];
-             [self.tableView reloadData];
+       [query whereKey:@"user" equalTo:user];
+       [query orderByAscending:@"createdAt"];
+       [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+           if (error) {
+               NSLog(@"%@", error.userInfo);
+           } else {
+          [self.photosArray addObjectsFromArray:objects];
+          [self.tableView reloadData];
+           }
         }];
    }
 }
@@ -53,8 +64,6 @@
         image = [UIImage imageWithData:data];
         cell.imageView.image = image;
         NSLog(@"loaded an image");
-         [self.tableView reloadData];
-
     }];
 
     return cell;

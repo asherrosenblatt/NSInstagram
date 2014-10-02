@@ -30,7 +30,7 @@
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.delegate = self;
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:nil];
 
 }
 
@@ -54,7 +54,20 @@
 
     // Dismiss the image selection, hide the picker and
     PFObject *photo = [PFObject objectWithClassName:@"Photo"];
-    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+
+    UIImage *imageTaked = image;
+
+    UIImage* imageCropped;
+
+    CGFloat side = MIN(imageTaked.size.width, imageTaked.size.height);
+    CGFloat x = imageTaked.size.width / 2 - side / 2;
+    CGFloat y = imageTaked.size.height / 2 - side / 2;
+
+    CGRect cropRect = CGRectMake(x,y,side,side);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([imageTaked CGImage], cropRect);
+    imageCropped = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(imageCropped)];
     PFFile *file = [PFFile fileWithData:imageData];
     photo[@"image"] = file;
     photo[@"user"] = [PFUser currentUser];

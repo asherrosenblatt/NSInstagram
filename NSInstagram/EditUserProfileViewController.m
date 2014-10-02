@@ -10,10 +10,14 @@
 
 @interface EditUserProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *editProfileImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UITextField *bioTextField;
+@property NSData *profileImageData;
+@property NSData *headerImageData;
+@property BOOL *isProfileImage;
 
 @end
 
@@ -31,9 +35,17 @@
         [[PFUser currentUser] setObject:self.bioTextField.text forKey:@"profileBio"];
         NSLog(@"password changed");
     }
+    PFFile *profileImageFile = [PFFile fileWithData:self.profileImageData];
+    [[PFUser currentUser] setObject:profileImageFile forKey:@"profilePicture"];
+    PFFile *headerImageFile = [PFFile fileWithData:self.profileImageData];
+    [[PFUser currentUser] setObject:headerImageFile forKey:@"profilePicture"];
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"changes saved");
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if (error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Could not update profile!" message:[NSString stringWithFormat:@"%@", error.userInfo] delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+            [alertView show];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }];
 }
 
@@ -57,6 +69,7 @@
 
 - (IBAction)onChooseImageButtonPressed:(id)sender
 {
+    self.isProfileImage = YES;
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
     imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.delegate = self;
@@ -72,20 +85,35 @@
 
     // Dismiss the image selection, hide the picker and
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
-    self.editProfileImageView.image = [UIImage imageWithData:imageData];
-    PFFile *file = [PFFile fileWithData:imageData];
-    PFUser *user = [PFUser currentUser];
-    [user setObject:file forKey:@"profilePicture"];
-    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            NSLog(@"ERROR");
-        } else {
-            NSLog(@"Photo added");
-        }
-    }];
+    if (self.isProfileImage) {
+        self.editProfileImageView.image = [UIImage imageWithData:self.profileImageData];
+        self.profileImageData = imageData;
+    }
+    if (!self.isProfileImage) {
+        self.headerImageView.image = [UIImage imageWithData:self.headerImageData];
+        self.headerImageData = imageData;
 
+    }
     [picker dismissModalViewControllerAnimated:YES];
     //UIImage *newImage = image;
 }
+
+- (IBAction)cancelEditProfilePressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)onEditProfileHeaderPressed:(id)sender
+{
+    self.isProfileImage = NO;
+#warning make sure the image picker only changes the current image: profile or header. Not both.
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
 
 @end
