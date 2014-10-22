@@ -7,12 +7,14 @@
 //
 
 #import "LoginViewController.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface LoginViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UIButton *bottomButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet FBLoginView *loginView;
 
 @end
 
@@ -21,7 +23,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.loginView = [FBLoginView new];
+    self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+}
+
+// This method will be called when the user information has been fetched
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
+                            user:(id<FBGraphUser>)user {
+    PFUser *parseUser = [PFUser new];
+    [parseUser setUsername:user.username];
+    parseUser[@"firstName"] = user.name;
 }
 
 - (IBAction)onSignInPressed:(UIButton *)sender

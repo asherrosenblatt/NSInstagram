@@ -8,6 +8,7 @@
 
 #import "UserProfileViewController.h"
 #import "EditUserProfileViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface UserProfileViewController ()<UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
@@ -25,6 +26,7 @@
 {
     [super viewDidLoad];
     [self queryCurrentUserImages];
+    [self loadHeaderAndProfileImages];
     self.profileImageView.clipsToBounds = YES;
     self.profileImageView.layer.cornerRadius = 25;
 
@@ -32,16 +34,21 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self loadHeaderAndProfileImages];
+    [self queryCurrentUserImages];
+}
+
+- (void)loadHeaderAndProfileImages
+{
     PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePicture"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
         self.profileImageView.image = profileImage;
     }];
-    PFFile *headerImageFile = [[PFUser currentUser] objectForKey:@"headerImage"];
+    PFFile *headerImageFile = [[PFUser currentUser] objectForKey:@"headerPicture"];
     [headerImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        UIImage *headerImage = [[UIImage alloc]init];
-        headerImage = [UIImage imageWithData:data];
+        UIImage *headerImage = [[UIImage alloc]initWithData:data];
         self.headerImageView.image = headerImage;
     }];
     self.userNameLabel.text = [PFUser currentUser][@"firstName"];

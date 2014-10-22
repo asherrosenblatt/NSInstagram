@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *bioTextField;
 @property NSData *profileImageData;
 @property NSData *headerImageData;
-@property BOOL *isProfileImage;
+@property BOOL isProfileImage;
 
 @end
 
@@ -37,8 +37,8 @@
     }
     PFFile *profileImageFile = [PFFile fileWithData:self.profileImageData];
     [[PFUser currentUser] setObject:profileImageFile forKey:@"profilePicture"];
-    PFFile *headerImageFile = [PFFile fileWithData:self.profileImageData];
-    [[PFUser currentUser] setObject:headerImageFile forKey:@"profilePicture"];
+    PFFile *headerImageFile = [PFFile fileWithData:self.headerImageData];
+    [[PFUser currentUser] setObject:headerImageFile forKey:@"headerPicture"];
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Could not update profile!" message:[NSString stringWithFormat:@"%@", error.userInfo] delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
@@ -53,12 +53,38 @@
 {
     [super viewDidLoad];
     //load the picture into the edit thumbnail
+//    PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePicture"];
+//    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//        UIImage *profileImage = [[UIImage alloc]init];
+//        profileImage = [UIImage imageWithData:data];
+//        if (profileImage) {
+//            self.editProfileImageView.image = profileImage;
+//        }
+//    }];
+//    self.bioTextField.text = [PFUser currentUser][@"profileBio"];
+//    self.usernameTextField.text = [PFUser currentUser].username;
+//    self.emailTextField.text = [PFUser currentUser].email;
+//    self.passwordTextField.text = @"password";
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePicture"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
         if (profileImage) {
+            self.profileImageData = data;
             self.editProfileImageView.image = profileImage;
+        }
+    }];
+    PFFile *headerImageFile = [[PFUser currentUser] objectForKey:@"headerPicture"];
+    [headerImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *headerImage = [[UIImage alloc]init];
+        headerImage = [UIImage imageWithData:data];
+        if (headerImage) {
+            self.headerImageData = data;
+            self.headerImageView.image = headerImage;
         }
     }];
     self.bioTextField.text = [PFUser currentUser][@"profileBio"];

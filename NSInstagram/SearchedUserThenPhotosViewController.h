@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchedUserThenPhotosViewController : UIViewController
-
+@property PFUser *clickedUser;
 @end

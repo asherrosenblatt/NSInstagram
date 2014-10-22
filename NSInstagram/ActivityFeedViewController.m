@@ -7,6 +7,7 @@
 //
 
 #import "ActivityFeedViewController.h"
+#import "ActivityFeedTableViewCell.h"
 
 @interface ActivityFeedViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *activityFeedTableView;
@@ -27,7 +28,6 @@
 //        [self.followingArray addObject:user];
 //    }
     NSLog(@"%@",self.followingArray);
-    self.photosArray = [NSMutableArray new];
     [self fetchTheUsersImages];
 
 }
@@ -40,9 +40,14 @@
 
 -(void)fetchTheUsersImages
 {
+    NSDateFormatter *dateformat =[[NSDateFormatter alloc]init];
+    [dateformat setDateFormat:@"MM/dd/YYYY"];
+    NSString *date_String=[dateformat stringFromDate:[NSDate date]];
+    self.photosArray = [NSMutableArray new];
    for (PFUser *user in self.followingArray) {
        PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
        [query whereKey:@"user" equalTo:user];
+       [query whereKey:@"dateString" containsString:date_String];
        [query orderByAscending:@"createdAt"];
        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
            if (error) {
@@ -57,12 +62,13 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityFeedCell"];
+    ActivityFeedTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"activityFeedCell"];
     PFFile *imageFile = [[self.photosArray objectAtIndex:indexPath.row] objectForKey:@"image"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *image = [[UIImage alloc]init];
         image = [UIImage imageWithData:data];
-        cell.imageView.image = image;
+        cell.bigImageView.image = image;
+        //cell.userImageView.image =
         NSLog(@"loaded an image");
     }];
 

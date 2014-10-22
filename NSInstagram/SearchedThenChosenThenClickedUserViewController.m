@@ -8,6 +8,7 @@
 
 #import "SearchedThenChosenThenClickedUserViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SearchedUserThenPhotosViewController.h"
 
 @interface SearchedThenChosenThenClickedUserViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *profileHeaderImageView;
 @property (strong, nonatomic) IBOutlet UIButton *followButton;
+@property (strong, nonatomic) IBOutlet UIButton *blockButton;
 
 
 @end
@@ -29,10 +31,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.following = [[NSArray alloc] initWithArray:[PFUser currentUser][@"following"]];
-    self.imageView.clipsToBounds = YES;
-    self.imageView.layer.cornerRadius = 25;
-    self.user = [PFUser currentUser];
+    [self checkFollowAndBlockStatus];
+
+
+}
+
+-(void)loadUserInfo
+{
     PFFile *profileImageFile = [self.clickedUser objectForKey:@"profilePicture"];
 
     [profileImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -48,7 +53,7 @@
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
         if (profileImage) {
-            self.imageView.image = profileImage;
+            self.profileHeaderImageView.image = profileImage;
         }
     }];
 
@@ -56,6 +61,21 @@
 
     self.navigationItem.title = self.clickedUser.username;
     self.bioLabel.text = [self.clickedUser objectForKey:@"profileBio"];
+}
+
+- (IBAction)onBlockPressed:(UIButton *)sender
+{
+    if ([sender.titleLabel.text isEqualToString:@"Block"]) {
+        [self.clickedUser addObject:[PFUser currentUser] forKey:@"blockedBy"];
+        [self.clickedUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [sender setTitle:@"Unblock" forState:UIControlStateNormal];
+                }];
+    } else {
+        [self.clickedUser removeObject:[PFUser currentUser] forKey:@"blockedBy"];
+        [self.clickedUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [sender setTitle:@"Block" forState:UIControlStateNormal];
+        }];
+    }
 }
 
 -(void)queryClickedUserImages
@@ -100,29 +120,65 @@
 
 - (IBAction)onFollowButtonPressed:(UIButton *)sender
 {
-//    NSArray *followingArray = [NSArray arrayWithArray:[[PFUser currentUser] objectForKey:@"following"]];
-//    if ([followingArray containsObject:self.clickedUser]) {
-//        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Follow them again?" message:@"You're already following this person!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
-//        [alertView show];
-//    } else {
-//        [[PFUser currentUser]addObject:self.clickedUser forKey:@"following"];
-//       [[PFUser currentUser]saveInBackground];
-//    }
-    self.following = [PFUser currentUser][@"following"];
-    if ([self.following containsObject:self.clickedUser]) {
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Follow them again?" message:@"You're already following this person!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
-        [alertView show];
-    }
-    else if (![self.following containsObject:self.clickedUser])
-    {
-        [[PFUser currentUser] addObject:self.clickedUser forKey:@"following"];
-        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            self.following = [NSArray arrayWithArray:[PFUser currentUser][@"following"]];
-            self.followButton.titleLabel.text = @"Following!";
-            self.followButton.backgroundColor = [UIColor grayColor];
-        }];
-    }
+        if ([self.followButton.backgroundColor isEqual:[UIColor grayColor]]) {
+            [[PFUser currentUser] removeObject:self.clickedUser forKey:@"following"];
+            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
+                self.followButton.backgroundColor = [UIColor blueColor];
+            }];
+        } else {
+            [[PFUser currentUser] addObject:self.clickedUser forKey:@"following"];
+            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+                self.followButton.backgroundColor = [UIColor grayColor];
+            }];
+        }
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self checkFollowAndBlockStatus];
+    [self loadUserInfo];
+}
+
+-(void)checkFollowAndBlockStatus
+{
+    NSMutableArray *followingUsernames = [NSMutableArray new];
+    [self.clickedUser fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        for (PFUser *user in [PFUser currentUser][@"following"]) {
+            [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                [followingUsernames addObject:user.username];
+            }];
+        }
+        for (NSString *username in followingUsernames) {
+            if ([username isEqualToString:self.clickedUser.username]) {
+                [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+                self.followButton.backgroundColor = [UIColor grayColor];
+            }
+        }
+    }];
+
+    NSMutableArray *blockedByUsernames = [NSMutableArray new];
+    [self.clickedUser fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        for (PFUser *user in self.clickedUser[@"blockedBy"]) {
+            [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                [blockedByUsernames addObject:user.username];
+            }];
+        }
+        for (NSString *username in blockedByUsernames) {
+            if ([username isEqualToString:[PFUser currentUser].username]) {
+                [self.blockButton setTitle:@"Unblock" forState:UIControlStateNormal];
+            }
+        }
+    }];
+}
+
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SearchedUserThenPhotosViewController *vc = segue.destinationViewController;
+    vc.clickedUser = self.clickedUser;
 }
 
 

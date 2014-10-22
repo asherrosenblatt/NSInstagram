@@ -48,6 +48,8 @@
     NSString *searchString = self.searchBar.text;
     PFQuery *query = [PFUser query];
     [query whereKey:@"username" containsString:searchString];
+#warning testing blocking here
+    [query whereKey:@"username" notContainedIn:[PFUser currentUser][@"blockedBy"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
         if (error)
         {
@@ -74,8 +76,9 @@
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         UIImage *profileImage = [[UIImage alloc]init];
         profileImage = [UIImage imageWithData:data];
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.imageView.clipsToBounds = YES;
-        cell.imageView.layer.cornerRadius = 20;
+        cell.imageView.layer.cornerRadius = 15;
         cell.imageView.image = profileImage;
         [self.searchTableView reloadData];
     }];

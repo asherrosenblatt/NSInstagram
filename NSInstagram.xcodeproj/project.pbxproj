@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BA0609FD19DC50AB002B8586 /* FollowingTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA0609FC19DC50AB002B8586 /* FollowingTableTableViewController.m */; };
+		BA586DE719DF4649000B0DCC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA586DE619DF4649000B0DCC /* FacebookSDK.framework */; };
 		BA70246219D5C0A300EABBD9 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA70246119D5C0A300EABBD9 /* CoreImage.framework */; };
+		BACBDD1F19E58ABF00459A53 /* ActivityFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BACBDD1E19E58ABF00459A53 /* ActivityFeedTableViewCell.m */; };
 		BACE2BB519A2B71C001B8858 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB419A2B71C001B8858 /* Foundation.framework */; };
 		BACE2BB719A2B71C001B8858 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB619A2B71C001B8858 /* CoreGraphics.framework */; };
 		BACE2BB919A2B71C001B8858 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB819A2B71C001B8858 /* UIKit.framework */; };
@@ -60,7 +62,10 @@
 /* Begin PBXFileReference section */
 		BA0609FB19DC50AB002B8586 /* FollowingTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowingTableTableViewController.h; sourceTree = "<group>"; };
 		BA0609FC19DC50AB002B8586 /* FollowingTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowingTableTableViewController.m; sourceTree = "<group>"; };
+		BA586DE619DF4649000B0DCC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		BA70246119D5C0A300EABBD9 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		BACBDD1D19E58ABF00459A53 /* ActivityFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFeedTableViewCell.h; sourceTree = "<group>"; };
+		BACBDD1E19E58ABF00459A53 /* ActivityFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityFeedTableViewCell.m; sourceTree = "<group>"; };
 		BACE2BB119A2B71C001B8858 /* NSInstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSInstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BACE2BB419A2B71C001B8858 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BACE2BB619A2B71C001B8858 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -123,6 +128,7 @@
 				BACE2C0619A2BD90001B8858 /* QuartzCore.framework in Frameworks */,
 				BACE2C0019A2BC84001B8858 /* MobileCoreServices.framework in Frameworks */,
 				BACE2C0419A2BD2E001B8858 /* StoreKit.framework in Frameworks */,
+				BA586DE719DF4649000B0DCC /* FacebookSDK.framework in Frameworks */,
 				BACE2BFA19A2BC84001B8858 /* Accounts.framework in Frameworks */,
 				BACE2BFB19A2BC84001B8858 /* AdSupport.framework in Frameworks */,
 				BACE2BFC19A2BC84001B8858 /* AudioToolbox.framework in Frameworks */,
@@ -173,6 +179,7 @@
 		BACE2BB319A2B71C001B8858 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA586DE619DF4649000B0DCC /* FacebookSDK.framework */,
 				BA70246119D5C0A300EABBD9 /* CoreImage.framework */,
 				BACE2BEF19A2BB9F001B8858 /* Parse.framework */,
 				BACE2C0719A2BDA4001B8858 /* SystemConfiguration.framework */,
@@ -223,6 +230,8 @@
 				BACE2BCD19A2B71C001B8858 /* ActivityFeedViewController.m */,
 				BACE2BC919A2B71C001B8858 /* UserProfileViewController.h */,
 				BACE2BCA19A2B71C001B8858 /* UserProfileViewController.m */,
+				BACBDD1D19E58ABF00459A53 /* ActivityFeedTableViewCell.h */,
+				BACBDD1E19E58ABF00459A53 /* ActivityFeedTableViewCell.m */,
 				BACE2BCF19A2B71C001B8858 /* Images.xcassets */,
 				BACE2BBB19A2B71C001B8858 /* Supporting Files */,
 			);
@@ -368,6 +377,7 @@
 				BACE2BC119A2B71C001B8858 /* main.m in Sources */,
 				BAD7773E19A3E8D40091D0D2 /* EditUserProfileViewController.m in Sources */,
 				BAD1BA2C19A83EC0009B77F9 /* LoginViewController.m in Sources */,
+				BACBDD1F19E58ABF00459A53 /* ActivityFeedTableViewCell.m in Sources */,
 				BA0609FD19DC50AB002B8586 /* FollowingTableTableViewController.m in Sources */,
 				BAD1BA2F19A83F44009B77F9 /* SignUpViewController.m in Sources */,
 				DD361A9619A51CF500958CA4 /* SearchViewController.m in Sources */,
