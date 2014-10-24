@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *libraryButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (strong, nonatomic) IBOutlet UIImageView *dailyPhotoImageView;
+@property NSData *imageData;
+@property (strong, nonatomic) IBOutlet UIButton *uploadButton;
 
 
 @end
@@ -49,6 +51,10 @@
             }];
         }
         }];
+    if (!self.imageData) {
+        [self.uploadButton setAlpha:.5];
+        [self.uploadButton setEnabled:NO];
+    }
 }
 
 -(BOOL)checkUploadCount
@@ -144,70 +150,18 @@
 
 - (IBAction)onUploadPressed:(id)sender
 {
-    
-}
+    if (self.imageData) {
+        UIImage *image = [UIImage imageWithData:self.imageData];
+        [[PFUser currentUser] fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if ([self checkUploadCount])
+            {
+                NSDateFormatter *dateformat =[[NSDateFormatter alloc]init];
+                [dateformat setDateFormat:@"MM/dd/YYYY"];
+                NSString *date_String=[dateformat stringFromDate:[NSDate date]];
+                NSNumber *photoCount = [PFUser currentUser][@"PCNumber"];
 
-- (void)imagePickerController:(UIImagePickerController *)picker
-        didFinishPickingImage:(UIImage *)image
-                  editingInfo:(NSDictionary *)editingInfo
-{
-
-
-    [[PFUser currentUser] fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if ([self checkUploadCount])
-        {
-            NSDateFormatter *dateformat =[[NSDateFormatter alloc]init];
-            [dateformat setDateFormat:@"MM/dd/YYYY"];
-            NSString *date_String=[dateformat stringFromDate:[NSDate date]];
-            NSNumber *photoCount = [PFUser currentUser][@"PCNumber"];
-
-            PFObject *photo = [PFObject objectWithClassName:@"Photo"];
-
-            UIImage *imageTaked = image;
-
-            UIImage* imageCropped;
-
-            CGFloat side = MIN(imageTaked.size.width, imageTaked.size.height);
-            CGFloat x = imageTaked.size.width / 2 - side / 2;
-            CGFloat y = imageTaked.size.height / 2 - side / 2;
-
-            CGRect cropRect = CGRectMake(x,y,side,side);
-            CGImageRef imageRef = CGImageCreateWithImageInRect([imageTaked CGImage], cropRect);
-            imageCropped = [UIImage imageWithCGImage:imageRef];
-            CGImageRelease(imageRef);
-            NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(imageCropped)];
-            PFFile *file = [PFFile fileWithData:imageData];
-            photo[@"image"] = file;
-            photo[@"user"] = [PFUser currentUser];
-            photo[@"dateString"] = date_String;
-            
-            int PCInt = [photoCount intValue];
-            PCInt ++;
-            photoCount = [NSNumber numberWithInt:PCInt];
-            [PFUser currentUser][@"PCNumber"] = photoCount;
-
-            [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                [self.loadingIndicator setHidden:YES];
-                self.dailyPhotoImageView.image = [UIImage imageWithData:imageData];
-            }];
-            [picker dismissModalViewControllerAnimated:YES];
-            if (image) {
-                [self.loadingIndicator setHidden:NO];
-                [self.loadingIndicator startAnimating];
-            }
-
-        }
-        else if (![self checkUploadCount])
-        {
-            NSDateFormatter *dateformat =[[NSDateFormatter alloc]init];
-            [dateformat setDateFormat:@"MM/dd/YYYY"];
-            NSString *date_String=[dateformat stringFromDate:[NSDate date]];
-            PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
-            [query whereKey:@"user" equalTo:[PFUser currentUser]];
-            [query whereKey:@"dateString" containsString:date_String];
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 PFObject *photo = [PFObject objectWithClassName:@"Photo"];
-                photo = [objects objectAtIndex:0];
+
                 UIImage *imageTaked = image;
 
                 UIImage* imageCropped;
@@ -223,18 +177,82 @@
                 NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(imageCropped)];
                 PFFile *file = [PFFile fileWithData:imageData];
                 photo[@"image"] = file;
+                photo[@"user"] = [PFUser currentUser];
+                photo[@"dateString"] = date_String;
+
+                int PCInt = [photoCount intValue];
+                PCInt ++;
+                photoCount = [NSNumber numberWithInt:PCInt];
+                [PFUser currentUser][@"PCNumber"] = photoCount;
+
                 [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     [self.loadingIndicator setHidden:YES];
                     self.dailyPhotoImageView.image = [UIImage imageWithData:imageData];
                 }];
-                [picker dismissModalViewControllerAnimated:YES];
                 if (image) {
                     [self.loadingIndicator setHidden:NO];
                     [self.loadingIndicator startAnimating];
                 }
-            }];
-        }
-    }];
+
+            }
+            else if (![self checkUploadCount])
+            {
+                NSDateFormatter *dateformat =[[NSDateFormatter alloc]init];
+                [dateformat setDateFormat:@"MM/dd/YYYY"];
+                NSString *date_String=[dateformat stringFromDate:[NSDate date]];
+                PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+                [query whereKey:@"user" equalTo:[PFUser currentUser]];
+                [query whereKey:@"dateString" containsString:date_String];
+                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    PFObject *photo = [PFObject objectWithClassName:@"Photo"];
+                    photo = [objects objectAtIndex:0];
+                    UIImage *imageTaked = image;
+
+                    UIImage* imageCropped;
+
+                    CGFloat side = MIN(imageTaked.size.width, imageTaked.size.height);
+                    CGFloat x = imageTaked.size.width / 2 - side / 2;
+                    CGFloat y = imageTaked.size.height / 2 - side / 2;
+
+                    CGRect cropRect = CGRectMake(x,y,side,side);
+                    CGImageRef imageRef = CGImageCreateWithImageInRect([imageTaked CGImage], cropRect);
+                    imageCropped = [UIImage imageWithCGImage:imageRef];
+                    CGImageRelease(imageRef);
+                    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(imageCropped)];
+                    PFFile *file = [PFFile fileWithData:imageData];
+                    photo[@"image"] = file;
+                    [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        [self.loadingIndicator setHidden:YES];
+                        self.dailyPhotoImageView.image = [UIImage imageWithData:imageData];
+                    }];
+                    if (image) {
+                        [self.loadingIndicator setHidden:NO];
+                        [self.loadingIndicator startAnimating];
+                    }
+                }];
+            }
+        }];
+    }
+
+
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+        didFinishPickingImage:(UIImage *)image
+                  editingInfo:(NSDictionary *)editingInfo
+{
+
+    if (image)
+    {
+
+        [self dismissViewControllerAnimated:YES completion:^{
+            self.imageData = UIImagePNGRepresentation(image);
+            self.dailyPhotoImageView.image = image;
+            [self.uploadButton setAlpha:1];
+                [self.uploadButton setEnabled:YES];
+        }];
+
+    }
 
     
 }

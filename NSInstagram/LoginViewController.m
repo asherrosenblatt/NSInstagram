@@ -8,13 +8,16 @@
 
 #import "LoginViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "UserDetailsViewController.h"
 
-@interface LoginViewController ()
+
+@interface LoginViewController ()<FBLoginViewDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UIButton *bottomButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet FBLoginView *loginView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -24,15 +27,37 @@
 {
     [super viewDidLoad];
     self.loginView = [FBLoginView new];
-    self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+}
+
++ (void)initializeFacebook
+{
+
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
 }
 
 // This method will be called when the user information has been fetched
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    PFUser *parseUser = [PFUser new];
-    [parseUser setUsername:user.username];
-    parseUser[@"firstName"] = user.name;
+//    PFUser *parseUser = [PFUser new];
+//    [parseUser setUsername:user.username];
+//    parseUser[@"firstName"] = user.name;
+
+    [PFFacebookUtils logInWithFacebookId:user.objectID accessToken:user.objectID expirationDate:nil block:^(PFUser *user, NSError *error) {
+        if (error) {
+            NSLog(@"Error logging in with facebook to parse");
+        }
+        else {
+            NSLog(@"No error logging in with facebook to parse");
+        }
+    }];
+
 }
 
 - (IBAction)onSignInPressed:(UIButton *)sender
@@ -47,6 +72,51 @@
         }
     }];
 }
+
+//- (IBAction)loginButtonTouchHandler:(id)sender  {
+//    // Set permissions required from the facebook user account
+//    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+//
+//    // Login PFUser using Facebook
+//    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+//        [_activityIndicator stopAnimating]; // Hide loading indicator
+//
+//        if (!user) {
+//            NSString *errorMessage = nil;
+//            if (!error) {
+//                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+//                errorMessage = @"Uh oh. The user cancelled the Facebook login.";
+//            } else {
+//                NSLog(@"Uh oh. An error occurred: %@", error);
+//                errorMessage = [error localizedDescription];
+//            }
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+//                                                            message:errorMessage
+//                                                           delegate:nil
+//                                                  cancelButtonTitle:nil
+//                                                  otherButtonTitles:@"Dismiss", nil];
+//            [alert show];
+//        } else {
+//            if (user.isNew) {
+//                NSLog(@"User with facebook signed up and logged in!");
+//            } else {
+//                NSLog(@"User with facebook logged in!");
+//            }
+//            [self _presentUserDetailsViewControllerAnimated:YES];
+//        }
+//    }];
+//
+//    [_activityIndicator startAnimating]; // Show loading indicator until login is finished
+//}
+
+- (void)_presentUserDetailsViewControllerAnimated:(BOOL)animated {
+    UserDetailsViewController *detailsViewController = [[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:detailsViewController animated:animated];
+}
+
+
+
+//Allow the keyboard to move when the keyboard appears
 
 - (void)registerForKeyboardNotifications {
 

@@ -10,6 +10,7 @@
 		BA0609FD19DC50AB002B8586 /* FollowingTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA0609FC19DC50AB002B8586 /* FollowingTableTableViewController.m */; };
 		BA586DE719DF4649000B0DCC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA586DE619DF4649000B0DCC /* FacebookSDK.framework */; };
 		BA70246219D5C0A300EABBD9 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA70246119D5C0A300EABBD9 /* CoreImage.framework */; };
+		BAC6FFFD19F8195B001140B8 /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC6FFFC19F8195B001140B8 /* UserDetailsViewController.m */; };
 		BACBDD1F19E58ABF00459A53 /* ActivityFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BACBDD1E19E58ABF00459A53 /* ActivityFeedTableViewCell.m */; };
 		BACE2BB519A2B71C001B8858 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB419A2B71C001B8858 /* Foundation.framework */; };
 		BACE2BB719A2B71C001B8858 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE2BB619A2B71C001B8858 /* CoreGraphics.framework */; };
@@ -64,6 +65,8 @@
 		BA0609FC19DC50AB002B8586 /* FollowingTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowingTableTableViewController.m; sourceTree = "<group>"; };
 		BA586DE619DF4649000B0DCC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		BA70246119D5C0A300EABBD9 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		BAC6FFFB19F8195B001140B8 /* UserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailsViewController.h; sourceTree = "<group>"; };
+		BAC6FFFC19F8195B001140B8 /* UserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailsViewController.m; sourceTree = "<group>"; };
 		BACBDD1D19E58ABF00459A53 /* ActivityFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFeedTableViewCell.h; sourceTree = "<group>"; };
 		BACBDD1E19E58ABF00459A53 /* ActivityFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityFeedTableViewCell.m; sourceTree = "<group>"; };
 		BACE2BB119A2B71C001B8858 /* NSInstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSInstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BAC6FFFA19F8190A001140B8 /* facebook */ = {
+			isa = PBXGroup;
+			children = (
+				BAC6FFFB19F8195B001140B8 /* UserDetailsViewController.h */,
+				BAC6FFFC19F8195B001140B8 /* UserDetailsViewController.m */,
+			);
+			name = facebook;
+			sourceTree = "<group>";
+		};
 		BACE2BA819A2B71C001B8858 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +217,7 @@
 		BACE2BBA19A2B71C001B8858 /* NSInstagram */ = {
 			isa = PBXGroup;
 			children = (
+				BAC6FFFA19F8190A001140B8 /* facebook */,
 				BACE2BC319A2B71C001B8858 /* AppDelegate.h */,
 				BACE2BC419A2B71C001B8858 /* AppDelegate.m */,
 				BACE2BC619A2B71C001B8858 /* Main.storyboard */,
@@ -380,6 +393,7 @@
 				BACBDD1F19E58ABF00459A53 /* ActivityFeedTableViewCell.m in Sources */,
 				BA0609FD19DC50AB002B8586 /* FollowingTableTableViewController.m in Sources */,
 				BAD1BA2F19A83F44009B77F9 /* SignUpViewController.m in Sources */,
+				BAC6FFFD19F8195B001140B8 /* UserDetailsViewController.m in Sources */,
 				DD361A9619A51CF500958CA4 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

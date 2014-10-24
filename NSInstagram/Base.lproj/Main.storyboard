@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aji-c1-tim">
-                                <rect key="frame" x="0.0" y="384" width="165" height="85"/>
+                                <rect key="frame" x="0.0" y="384" width="160" height="85"/>
                                 <color key="backgroundColor" red="0.15686274509803921" green="0.2196078431372549" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Camera">
@@ -30,7 +29,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uET-Md-W8c">
-                                <rect key="frame" x="164" y="383" width="156" height="86"/>
+                                <rect key="frame" x="160" y="384" width="160" height="85"/>
                                 <color key="backgroundColor" red="0.13333333333333333" green="0.41960784313725491" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Photo Library">
@@ -68,6 +67,7 @@
                         <outlet property="dailyPhotoImageView" destination="HYc-dd-b7e" id="Eku-Bc-R9S"/>
                         <outlet property="libraryButton" destination="uET-Md-W8c" id="lnK-sF-psS"/>
                         <outlet property="loadingIndicator" destination="gdx-li-myW" id="yd9-K0-thZ"/>
+                        <outlet property="uploadButton" destination="A0G-Yb-qMV" id="IZB-0Z-uB2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
@@ -131,6 +131,9 @@
                                             <action selector="onSignInPressed:" destination="t1A-mQ-Ahy" eventType="touchUpInside" id="C6J-2s-Fvg"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="7F0-QC-uR4">
+                                        <rect key="frame" x="170" y="80" width="20" height="20"/>
+                                    </activityIndicatorView>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Vh-7S-Vpo" customClass="FBLoginView">
                                         <rect key="frame" x="40" y="316" width="280" height="40"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,6 +145,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="FSK-fL-343"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="7F0-QC-uR4" id="2ad-4K-E8K"/>
                         <outlet property="bottomButton" destination="m3b-y2-4cH" id="Ste-b2-NCd"/>
                         <outlet property="loginView" destination="8Vh-7S-Vpo" id="Phq-zP-Kuq"/>
                         <outlet property="passwordField" destination="eR4-TZ-1nM" id="3Iv-wI-ip0"/>
